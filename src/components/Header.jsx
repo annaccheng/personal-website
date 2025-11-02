@@ -4,7 +4,7 @@ export default function Header() {
             {/* Left - Icon & Name */}
             <div className="header-section">
                 <div className="logo-section">
-                    <img className="logo" src="/profile-photo.jpg" alt="Anna" />
+                    <div className="logo">A</div>
                     <h1 className="name header-text">Anna</h1>
                 </div>
             </div>
