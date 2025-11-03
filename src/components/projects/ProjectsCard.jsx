@@ -1,14 +1,17 @@
 export default function ProjectsCard({ project }) {
-    const { id, project_date, title, description, photo, tags, link, visibility_score } = project;
+    const { id, project_date, title, description, photo, tags, category, link, visibility_score } = project;
+
+    // console.log(tags, Array.isArray(tags));
+    //console.log(category);
 
     return (
         <div className="project-card">
             <div className="project-image-container">
                 <img src={photo} alt={title} className="project-image" />
             </div>
-            <div className="project-tags">
-                {tags.map((tag) => (
-                    <span key={tag} className="project-tag">{tag}</span>
+            <div className="project-category">
+                {category.map((category) => (
+                    <span key={category} className="project-category">{category}</span>
                 ))}
             </div>
             <div className="project-content">
@@ -22,6 +25,11 @@ export default function ProjectsCard({ project }) {
                         </a>
                     </div>
                 )}
+            </div>
+            <div className="project-tags">
+                {tags.map((tag) => (
+                    <span key={tag} className="project-tag">{tag}</span>
+                ))}
             </div>
         </div>
     )

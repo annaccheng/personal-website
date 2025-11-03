@@ -220,3 +220,119 @@ main h1 {
         text-align: center;
     }
 }
+
+/* Projects Filter Styles */
+.projects-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.filter-btn {
+    padding: 0.5rem 1rem;
+    margin-right: 0.5rem;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    background-color: transparent;
+    font-weight: normal;
+    transition: all 0.2s ease;
+}
+
+.filter-btn-all {
+    font-weight: normal;
+    border: 1px solid #ccc;
+}
+
+.filter-btn-all.active {
+    font-weight: bold;
+    border: 2px solid #333;
+}
+
+.filter-btn-category {
+    font-weight: normal;
+    background-color: transparent;
+    border: 1px solid #ccc;
+}
+
+.filter-btn-category.active {
+    font-weight: bold;
+    background-color: #e0e0e0;
+    border: 2px solid #333;
+}
+
+/* Projects Carousel Styles */
+.projects-carousel-section {
+    margin: 2rem 0;
+}
+
+.projects-carousel-container {
+    position: relative;
+}
+
+.carousel-nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    transition: background-color 0.2s ease;
+}
+
+.carousel-nav-btn:hover {
+    background: rgba(255, 255, 255, 1);
+}
+
+.carousel-nav-btn-left {
+    left: 0;
+}
+
+.carousel-nav-btn-right {
+    right: 0;
+}
+
+.carousel-scroll-container {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 1rem;
+    padding: 1rem 3rem;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.carousel-scroll-container::-webkit-scrollbar {
+    display: none;
+}
+
+.carousel-item {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+    width: 300px;
+}
+
+/* Projects Grid Styles */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+/* Loading and Error States */
+.loading-state,
+.error-state,
+.empty-state {
+    text-align: center;
+    padding: 2rem;
+    color: #666;
+}

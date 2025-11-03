@@ -1,21 +1,22 @@
+import { Link } from 'react-router-dom';
+
 export default function Header() {
     return (
         <header className="header">
             {/* Left - Icon & Name */}
             <div className="header-section">
-                <div className="logo-section">
+                <Link to="/" className="logo-section">
                     <div className="logo">A</div>
                     <h1 className="name header-text">Anna</h1>
-                </div>
+                </Link>
             </div>
 
             {/* Right - navigation */}
             <div className="header-section">
                 <nav className="nav-section">
                     <ul>
-                        <li><a href="#about" className="header-text">About</a></li>
-                        <li><a href="#projects" className="header-text">Projects</a></li>
-                        <li><a href="#contact" className="header-text">Contact</a></li>
+                        <li><Link to="/about" className="header-text">About</Link></li>
+                        <li><Link to="/projects" className="header-text">Projects</Link></li>
                     </ul>
                 </nav>
             </div>
