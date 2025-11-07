@@ -5,10 +5,12 @@ import Projects from './pages/Projects';
 import About from './pages/About';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import StarOverlay from './components/StarOverlay';
 
 function App() {
   return (
     <div className="App">
+      <StarOverlay />
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />

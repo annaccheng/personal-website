@@ -1,18 +1,27 @@
 import ProjectsCard from '../components/projects/ProjectsCard';
 import ProjectsFilter from '../components/projects/ProjectsFilter';
 import { fetchProjects, fetchProjectsByCategory } from '../services/api';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 export default function Projects() {
     const [projects, setProjects] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [isFiltering, setIsFiltering] = useState(false);
     const [error, setError] = useState(null);
     const [selectedCategories, setSelectedCategories] = useState([]);
+    const isInitialLoadRef = useRef(true);
 
     useEffect(() => {
         async function loadProjects() {
             try {
-                setLoading(true);
+                // Only show full loading state on initial load
+                if (isInitialLoadRef.current) {
+                    setLoading(true);
+                    isInitialLoadRef.current = false;
+                } else {
+                    // For filter changes, use a lighter loading state
+                    setIsFiltering(true);
+                }
                 setError(null);
                 
                 const data = selectedCategories && selectedCategories.length > 0
@@ -25,6 +34,7 @@ export default function Projects() {
                 console.error(err);
             } finally {
                 setLoading(false);
+                setIsFiltering(false);
             }
         }
 
@@ -35,7 +45,8 @@ export default function Projects() {
         setSelectedCategories(categories || []);
     };
 
-    if (loading) {
+    // Show full loading state only on initial load
+    if (loading && projects.length === 0) {
         return <div className="loading-state">Loading projects...</div>;
     }
 
@@ -44,7 +55,7 @@ export default function Projects() {
     }
 
     return (
-        <div>
+        <div className="projects-page">
             <h1>Projects</h1>
             
             <ProjectsFilter 
@@ -52,13 +63,17 @@ export default function Projects() {
                 selectedCategories={selectedCategories}
             />
             
-            <div className="projects-grid">
+            <div className={`projects-grid ${isFiltering ? 'filtering' : ''}`}>
                 {projects.map((project) => (
                     <ProjectsCard key={project.id} project={project} />
                 ))}
+                {isFiltering && (
+                    <div className="filter-loading-overlay">
+                    </div>
+                )}
             </div>
             
-            {projects.length === 0 && (
+            {projects.length === 0 && !isFiltering && (
                 <p>No projects found in this category.</p>
             )}
         </div>

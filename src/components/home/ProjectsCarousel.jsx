@@ -60,8 +60,6 @@ export default function ProjectsCarousel({ numProjects = 6 }) {
 
     return (
         <section className="projects-carousel-section">
-            <h2>Featured Projects</h2>
-            
             <div className="projects-carousel-container">
                 {/* Left Navigation Button */}
                 <button 
