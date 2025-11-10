@@ -5,13 +5,13 @@ export default function ProjectsCard({ project }) {
     //console.log(category);
 
     return (
-        <div className="project-card">
+        <div className="project-card card-base">
             <div className="project-image-container">
                 <img src={photo} alt={title} className="project-image" />
             </div>
-            <div className="project-content">
-                <h3 className="project-title">{title}</h3>
-                <p className="project-description">{description}</p>
+            <div className="card-content">
+                <h3 className="card-title">{title}</h3>
+                <p className="card-description">{description}</p>
                 {link && (
                     <div className="project-links">
                         <a href={link} target="_blank" rel="noopener noreferrer" className="project-link">
@@ -25,9 +25,9 @@ export default function ProjectsCard({ project }) {
                         <span key={category} className="project-category">{category}</span>
                     ))}
                 </div>
-            <div className="project-tags">
+            <div className="card-tags">
                 {tags.map((tag) => (
-                    <span key={tag} className="project-tag">{tag}</span>
+                    <span key={tag} className="card-tag">{tag}</span>
                 ))}
             </div>
         </div>

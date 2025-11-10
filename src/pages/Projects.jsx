@@ -2,6 +2,7 @@ import ProjectsCard from '../components/projects/ProjectsCard';
 import ProjectsFilter from '../components/projects/ProjectsFilter';
 import { fetchProjects, fetchProjectsByCategory } from '../services/api';
 import { useState, useEffect, useRef } from 'react';
+import ufoImage from '../assets/projectPage/Ufo.svg';
 
 export default function Projects() {
     const [projects, setProjects] = useState([]);
@@ -56,26 +57,33 @@ export default function Projects() {
 
     return (
         <div className="projects-page">
-            <h1>Projects</h1>
-            
-            <ProjectsFilter 
-                onFilterChange={handleFilterChange}
-                selectedCategories={selectedCategories}
-            />
-            
-            <div className={`projects-grid ${isFiltering ? 'filtering' : ''}`}>
-                {projects.map((project) => (
-                    <ProjectsCard key={project.id} project={project} />
-                ))}
-                {isFiltering && (
-                    <div className="filter-loading-overlay">
-                    </div>
+            <div className="projects-page-container">
+                <img 
+                    src={ufoImage} 
+                    alt="" 
+                    className="projects-ufo"
+                />
+                <h1>Projects</h1>
+                
+                <ProjectsFilter 
+                    onFilterChange={handleFilterChange}
+                    selectedCategories={selectedCategories}
+                />
+                
+                <div className={`projects-grid ${isFiltering ? 'filtering' : ''}`}>
+                    {projects.map((project) => (
+                        <ProjectsCard key={project.id} project={project} />
+                    ))}
+                    {isFiltering && (
+                        <div className="filter-loading-overlay">
+                        </div>
+                    )}
+                </div>
+                
+                {projects.length === 0 && !isFiltering && (
+                    <p>No projects found in this category.</p>
                 )}
             </div>
-            
-            {projects.length === 0 && !isFiltering && (
-                <p>No projects found in this category.</p>
-            )}
         </div>
     );
 }

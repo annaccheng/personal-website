@@ -1,0 +1,35 @@
+[
+    {
+      "id": 1,
+      "title": "Associate Product Manager Intern",
+      "company": "Salesforce",
+      "location": "San Francisco, CA",
+      "description": "Worked on a lot of things lol",
+      "tags": ["AI", "React", "OpenAI API"],
+      "startDate": "May 2025", 
+      "endDate": "August 2025"
+    },
+
+    {
+      "id": 2,
+      "title": "Associate Product Manager Intern",
+      "company": "Salesforce",
+      "location": "San Francisco, CA",
+      "description": "Worked on a lot of things lol",
+      "tags": ["AI", "React", "OpenAI API"],
+      "startDate": "May 2025", 
+      "endDate": "August 2025"
+    },
+
+    {
+      "id": 3,
+      "title": "Associate Product Manager Intern",
+      "company": "Salesforce",
+      "location": "San Francisco, CA",
+      "description": "Worked on a lot of things lol",
+      "tags": ["AI", "React", "OpenAI API"],
+      "startDate": "May 2025", 
+      "endDate": "August 2025"
+    }
+    
+]

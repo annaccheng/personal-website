@@ -1,0 +1,21 @@
+[
+    {
+        "id": 1,
+        "degree": "Bachelor of Arts in Computer Science",
+        "school": "University of California, Berkeley",
+        "location": "Berkeley, CA",
+        "startDate": "September 2022",
+        "endDate": "May 2026",
+        "gpa": 3.8
+    },
+
+    {
+        "id": 2,
+        "degree": "Bachelor of Science in Business Administration, Global Management",
+        "school": "University of California, Berkeley",
+        "location": "Berkeley, CA",
+        "startDate": "September 2022",
+        "endDate": "May 2026",
+        "gpa": 3.8
+    } 
+]
