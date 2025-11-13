@@ -6,10 +6,12 @@ import About from './pages/About';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import StarOverlay from './components/StarOverlay';
+import CursorTrail from './components/CursorTrail';
 
 function App() {
   return (
     <div className="App">
+      <CursorTrail />
       <StarOverlay />
       <Header />
       <Routes>
