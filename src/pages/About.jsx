@@ -3,6 +3,7 @@ import ExperienceCard from '../components/about/ExperienceCard';
 import EducationCard from '../components/about/EducationCard';
 import experienceData from '../data/experience.json';
 import educationData from '../data/education.json';
+import profilePhoto from '../assets/ProfilePhoto.png';
 
 export default function About() {
     const [experience, setExperience] = useState([]);
@@ -16,13 +17,20 @@ export default function About() {
     return (
         <div className="about-page">
             <div className="about-page-container">
-                <h1>About Me</h1>
-                <p className="about-intro">
-                    I'm a Product Manager that loves human-centered design and dabbles in a bit of coding and ML as well. 
-                    I'm a rising senior at UC Berkeley studying Computer Science and Business. I'm passionate about building 
-                    scalable products, advancing how we build with AI, and solving difficult problems. I also love puzzles in 
-                    general (mega NYT mini, crossword, and sudoku fiend), art, film photography, and hiking!
-                </p>
+                <div className="about-me-section">
+                    <div className="about-me-text">
+                        <h1>About Me</h1>
+                        <p className="about-intro">
+                            I'm a Product Manager that loves human-centered design and dabbles in a bit of coding and ML as well. 
+                            I'm a rising senior at UC Berkeley studying Computer Science and Business. I'm passionate about building 
+                            scalable products, advancing how we build with AI, and solving difficult problems. I also love puzzles in 
+                            general (mega NYT mini, crossword, and sudoku fiend), art, film photography, and hiking!
+                        </p>
+                    </div>
+                    <div className="about-me-image">
+                        <img src={profilePhoto} alt="Anna" />
+                    </div>
+                </div>
                 
                 <h1>Professional Experience</h1>
                 <div className="experience-section">

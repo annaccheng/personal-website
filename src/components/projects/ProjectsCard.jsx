@@ -1,8 +1,5 @@
 export default function ProjectsCard({ project }) {
-    const { id, project_date, title, description, photo, tags, category, link, visibility_score } = project;
-
-    // console.log(tags, Array.isArray(tags));
-    //console.log(category);
+    const { title, description, photo, tags, category, link } = project;
 
     return (
         <div className="project-card card-base">

@@ -1,5 +1,5 @@
 export default function ExperienceCard({ experience }) {
-    const { id, title, company, location, description, tags, startDate, endDate } = experience;
+    const { title, company, location, description, tags, startDate, endDate } = experience;
     const dateRange = `${startDate} - ${endDate}`;
 
     return (

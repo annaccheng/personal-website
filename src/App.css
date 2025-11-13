@@ -41,16 +41,6 @@
   box-shadow: 0 0 6px rgba(255, 255, 255, 1);
 }
 
-[data-theme="light"] .shooting-star {
-  background: linear-gradient(to bottom, transparent, rgba(30, 177, 246, 1), rgba(30, 177, 246, 0.5), transparent);
-  box-shadow: 0 0 10px rgba(30, 177, 246, 0.8);
-}
-
-[data-theme="dark"] .shooting-star {
-  background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.5), transparent);
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
-}
-
 .theme-toggle[data-theme="light"] {
   background-color: #ccc;
 }
@@ -79,7 +69,7 @@
 }
 
 .about-page-container {
-  padding: 200px 220px 50px 220px;
+  padding: 100px 220px 50px 220px;
   margin: 0 auto;
   width: 100%;
   max-width: 100%;
@@ -90,7 +80,7 @@
 .about-page-container h1 {
   color: var(--text);
   margin-bottom: 1.5rem;
-  margin-top: 3rem;
+  margin-top: 1rem;
   text-align: left;
 }
 
@@ -98,11 +88,45 @@
   margin-top: 0;
 }
 
+.about-me-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 60px;
+  margin-bottom: 3rem;
+}
+
+.about-me-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.about-me-text h1 {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+}
+
+.about-me-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-me-image img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
 .about-intro {
   color: var(--text);
   font-size: 1.1rem;
   line-height: 1.6;
-  margin-bottom: 2rem;
+  margin-bottom: 0;
   max-width: 800px;
   text-align: left;
 }
@@ -253,24 +277,25 @@ main h1 {
   z-index: 4;
 }
 
-.hero-text,
-.hero-image {
+.hero-text {
   position: relative;
   z-index: 100;
   flex: 1;
   display: flex;
-  align-items: center;
-}
-
-.hero-text {
   flex-direction: column;
   justify-content: center;
+  align-items: flex-start;
   text-align: left;
   max-width: 600px;
 }
 
 .hero-image {
+  position: relative;
+  z-index: 100;
+  flex: 1;
+  display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .hero h1 {
@@ -279,6 +304,13 @@ main h1 {
   min-height: 80px;
   line-height: 1.2;
   text-align: left;
+  width: 100%;
+  display: block;
+}
+
+.hero h1 span {
+  text-align: left;
+  width: 100%;
 }
 
 .hero p {
@@ -286,6 +318,7 @@ main h1 {
   font-size: 1.4rem;
   line-height: 1.6;
   margin-bottom: 0;
+  text-align: left;
 }
 
 .hero img {
@@ -399,30 +432,6 @@ main h1 {
 @keyframes drift {
   0% { transform: translate(0, 0); }
   100% { transform: translate(50px, 50px); }
-}
-
-.shooting-star {
-  position: absolute;
-  width: 2px;
-  height: 150px;
-  background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.5), transparent);
-  transform-origin: top center;
-  animation: shoot linear infinite;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
-}
-
-@keyframes shoot {
-  0% {
-    opacity: 0;
-    transform: translate(0, 0) rotate(var(--angle, 45deg)) scaleY(0);
-  }
-  2%, 98% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-    transform: translate(calc(100vw + 200px), calc(100vh + 200px)) rotate(var(--angle, 45deg)) scaleY(1);
-  }
 }
 
 .footer {
@@ -672,10 +681,6 @@ main h1 {
   box-shadow: 0 0 0 3px var(--accent3), 0 4px 15px rgba(0, 0, 0, 0.35);
 }
 
-.experience-card {
-  grid-column: 2;
-}
-
 .education-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
@@ -736,7 +741,6 @@ main h1 {
   flex-direction: column;
   gap: 0.75rem;
   flex: 1;
-  text-align: left;
 }
 
 .card-title {
@@ -811,6 +815,7 @@ main h1 {
 
 /* Experience Card Styles */
 .experience-card {
+  grid-column: 2;
   width: 100%;
   max-width: 100%;
 }
@@ -852,14 +857,25 @@ main h1 {
   transition: transform 0.3s ease;
 }
 
+.project-card {
+  text-align: center;
+}
+
+.project-card .card-content {
+  text-align: center;
+}
+
+.project-card .card-title {
+  text-align: center;
+}
+
 .project-card:hover .project-image {
   transform: scale(1.05);
 }
 
-/* Project-specific styles - project-content and project-description now use card-content and card-description */
-
 .project-links {
   margin-top: 0.5rem;
+  text-align: left;
 }
 
 .project-link {
@@ -928,6 +944,26 @@ main h1 {
   .projects-page-container,
   .about-page-container {
     padding: 180px 20px 50px 20px;
+  }
+  
+  .about-me-section {
+    flex-direction: column;
+    gap: 40px;
+    text-align: center;
+  }
+  
+  .about-me-text {
+    padding-top: 100px;
+    max-width: 100%;
+  }
+  
+  .about-me-image {
+    justify-content: center;
+  }
+  
+  .about-me-image img {
+    width: 200px;
+    height: 200px;
   }
   
   .education-grid {
@@ -1006,6 +1042,16 @@ main h1 {
   .projects-page-container,
   .about-page-container {
     padding: 170px 15px 50px 15px;
+  }
+  
+  .about-me-section {
+    flex-direction: column;
+    gap: 30px;
+  }
+  
+  .about-me-image img {
+    width: 180px;
+    height: 180px;
   }
   
   .education-grid {

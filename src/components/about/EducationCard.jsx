@@ -1,5 +1,5 @@
 export default function EducationCard({ education }) {
-    const { id, degree, school, location, startDate, endDate, gpa } = education;
+    const { degree, school, location, startDate, endDate, gpa } = education;
 
     return (
         <div className="education-card card-base">

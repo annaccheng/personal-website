@@ -4,7 +4,7 @@
       "title": "Associate Product Manager Intern",
       "company": "Salesforce",
       "location": "San Francisco, CA",
-      "description": "Worked on a lot of things lol",
+      "description": "Built an end-to-end customer feedback pipeline reducing cycle time by 40% and influence roadmap priorities. Identified customer gaps, and designed RAG analytics dashboard, and led multi-language agent evaluations spanning 30+ languages and $300M in business value.",
       "tags": ["AI", "React", "OpenAI API"],
       "startDate": "May 2025", 
       "endDate": "August 2025"
@@ -12,24 +12,57 @@
 
     {
       "id": 2,
-      "title": "Associate Product Manager Intern",
-      "company": "Salesforce",
-      "location": "San Francisco, CA",
-      "description": "Worked on a lot of things lol",
+      "title": "Product Management and Analytics Intern",
+      "company": "Capital One",
+      "location": "McLean, VA",
+      "description": "Analyzed web engagement data using SQL/Snowflake to identify conversion drivers, uncovering insights to boost conversions and help acquire 3M+ new accounts. Partnered cross-functionally to improve user experience and streamline credit approvals.",
       "tags": ["AI", "React", "OpenAI API"],
-      "startDate": "May 2025", 
-      "endDate": "August 2025"
+      "startDate": "June 2024", 
+      "endDate": "August 2024"
     },
 
     {
       "id": 3,
-      "title": "Associate Product Manager Intern",
-      "company": "Salesforce",
-      "location": "San Francisco, CA",
-      "description": "Worked on a lot of things lol",
+      "title": "Product Manager (Contract)",
+      "company": "Tesla",
+      "location": "Fremont, CA",
+      "description": "Analyzed 150+ market reports to identify competitive opportunities and shape GTM and product strategy. Built campaign mockups, defined key performance metrics, and gathered customer insights through interviews and market research.",
       "tags": ["AI", "React", "OpenAI API"],
-      "startDate": "May 2025", 
-      "endDate": "August 2025"
+      "startDate": "January 2024", 
+      "endDate": "May 2024"
+    },
+    
+    {
+      "id": 4,
+      "title": "Product Manager (Contract)",
+      "company": "MasterClass",
+      "location": "San Francisco, CA",
+      "description": "Developed an automated financial modeling database with Python/JavaScript, improving data efficiency by 20%. Developed machine learning tools to track key metrics and forecasting models that improved budget accuracy.",
+      "tags": ["AI", "React", "OpenAI API"],
+      "startDate": "September 2023", 
+      "endDate": "January 2024"
+    },
+
+    {
+      "id": 5,
+      "title": "Product Manager (Contract)",
+      "company": "Verizon Cloud",
+      "location": "San Francisco, CA",
+      "description": "Created a 6-month product roadmap with integrated data pipelines and Figma prototypes for engagement tracking. Led UX ideation and “Power User” definition through interviews with 8K+ users, providing insights for retention efforts.",
+      "tags": ["AI", "React", "OpenAI API"],
+      "startDate": "September 2023", 
+      "endDate": "January 2024"
+    },
+
+    {
+      "id": 6,
+      "title": "Finance and Analytics Intern",
+      "company": "GoFundMe",
+      "location": "San Francisco, CA",
+      "description": "Developed a seasonality-based revenue projection model reducing forecast variance to 6%. Automated vendor data aggregation and produced KPI dashboards for executive business reviews, improving reporting efficiency by 15%.",
+      "tags": ["AI", "React", "OpenAI API"],
+      "startDate": "June 2023", 
+      "endDate": "September 2023"
     }
     
 ]
