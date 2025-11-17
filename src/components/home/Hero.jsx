@@ -6,6 +6,22 @@ export default function Hero() {
 
     return (
         <div className="hero">
+            <div className="hero-orbs">
+                <span className="hero-orb hero-orb--one"></span>
+                <span className="hero-orb hero-orb--two"></span>
+                <span className="hero-orb hero-orb--three"></span>
+            </div>
+            <div className="hero-message">
+                <div className="hero-message-line hero-message-line--top">
+                    <span>INCOMING MESSAGE</span>
+                </div>
+                <div className="hero-message-main">
+                    <span>Welcome to Anna&apos;s Website!</span>
+                </div>
+                <div className="hero-message-line hero-message-line--bottom">
+                    <span>INCOMING MESSAGE</span>
+                </div>
+            </div>
             <div className="hero-stars">
                 {stars.map((star) => (
                     <div
@@ -24,9 +40,6 @@ export default function Hero() {
             </div>
             <div className="hero-planet">
                 <img src={catAstronaut} alt="Cat Astronaut" className="hero-cat-astronaut" />
-            </div>
-            <div className="hero-text">
-                <p>Welcome to Anna's website!</p>
             </div>
         </div>
     )

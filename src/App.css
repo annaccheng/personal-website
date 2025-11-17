@@ -14,6 +14,8 @@
   --projects-bg: url('./assets/projectPage/StarTrailLight.svg');
   --icon-color: #000000;
   --hero-planet: url('./assets/PlanetLight.svg');
+  --orb-color1: rgba(201, 113, 255, 0.45);
+  --orb-color2: rgba(201, 113, 255, 0);
 }
 
 :root[data-theme="dark"] {
@@ -32,6 +34,8 @@
   --projects-bg: url('./assets/projectPage/StarTrailDark.svg');
   --icon-color: #ffffff;
   --hero-planet: url('./assets/PlanetDark.svg');
+  --orb-color1: rgba(113, 250, 255, 0.45);
+  --orb-color2: rgba(113, 250, 255, 0);
 }
 
 /* Theme-specific styles */
@@ -136,6 +140,12 @@
   text-align: left;
 }
 
+/* Typography - Orbitron font for headings */
+h1, h2, h3, h4, h5, h6,
+.card-title {
+  font-family: 'Orbitron', sans-serif;
+}
+
 .App {
   text-align: center;
   background-color: var(--bg);
@@ -165,7 +175,7 @@
 }
 
 .header-text {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  font-family: 'Orbitron', sans-serif;
   font-weight: 500;
   font-size: 18px;
   letter-spacing: 0.3px;
@@ -250,7 +260,7 @@ main h1 {
   padding: 150px 150px 350px 150px;
   margin: 0 auto;
   width: 100%;
-  min-height: 100vh;
+  min-height: 112vh;
   position: relative;
   display: flex;
   justify-content: space-between;
@@ -264,7 +274,9 @@ main h1 {
   content: '';
   position: absolute;
   inset: 0;
-  background: var(--hero-bg) center / cover no-repeat;
+  background: var(--hero-bg) center top / cover no-repeat;
+  background-size: cover;
+  background-position: center top;
   z-index: 0;
 }
 
@@ -273,8 +285,8 @@ main h1 {
   bottom: 0;
   left: 50%;
   transform: translate(-50%, 55%);
-  width: 120vw;
-  height: 120vw;
+  width: 135vw;
+  height: 135vw;
   background: var(--hero-planet) center / contain no-repeat;
   z-index: 1;
   pointer-events: none;
@@ -284,11 +296,141 @@ main h1 {
   position: absolute;
   top: 0;
   left: 50%;
-  transform: translate(-50%, 250%);
+  transform: translate(-50%, 295%);
   width: 6vw;
   height: auto;
   z-index: 1;
+  pointer-events: auto;
+  cursor: pointer;
+  transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+.hero-cat-astronaut:hover {
+  transform: translate(-50%, 288%) scale(1.05);
+  filter: drop-shadow(0 0 10px rgba(113, 250, 255, 0.6));
+}
+
+.hero-orbs {
+  position: absolute;
+  inset: 0;
   pointer-events: none;
+  z-index: 0;
+}
+
+.hero-orb {
+  position: absolute;
+  width: 20vw;
+  height: 20vw;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, var(--orb-color1), var(--orb-color2));
+  box-shadow:
+    0 0 30px rgba(113, 250, 255, 0.25),
+    0 0 60px rgba(113, 250, 255, 0.15),
+    inset 0 0 40px rgba(113, 250, 255, 0.25);
+  animation: orbFloat 20s ease-in-out infinite;
+}
+
+.hero-orb--one {
+  top: 20%;
+  left: 2%;
+  animation-delay: -2s;
+}
+
+.hero-orb--two {
+  top: 35%;
+  right: 8%;
+  animation-delay: -5s;
+}
+
+.hero-orb--three {
+  bottom: 15%;
+  left: 25%;
+  animation-delay: -8s;
+}
+
+.hero-message {
+  position: absolute;
+  top: 110px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(90vw, 800px);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-items: center;
+  text-align: center;
+  z-index: 50;
+  pointer-events: none;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+  color: var(--text);
+}
+
+.hero-message-line {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  color: var(--accent3);
+}
+
+.hero-message-line::before,
+.hero-message-line::after {
+  content: '';
+  flex: 1;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, var(--accent3), transparent);
+  box-shadow: 0 0 10px var(--accent3);
+}
+
+.hero-message-main {
+  padding: 14px 24px;
+  font-size: 2.5rem;
+  letter-spacing: 3px;
+  color: var(--text);
+  text-shadow:
+    0 0 8px rgba(113, 250, 255, 0.6),
+    0 0 18px rgba(113, 250, 255, 0.8);
+}
+
+.hero-message-main span {
+  position: relative;
+}
+
+.hero-message-main span::before,
+.hero-message-main span::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 105%;
+  height: 6px;
+  background: linear-gradient(90deg, transparent, var(--accent2), transparent);
+  box-shadow: 0 0 15px var(--accent2);
+}
+
+.hero-message-main span::before {
+  top: -14px;
+}
+
+.hero-message-main span::after {
+  bottom: -14px;
+}
+
+.hero-message--glow {
+  box-shadow:
+    0 0 25px rgba(30, 177, 246, 0.8),
+    0 0 45px rgba(30, 177, 246, 0.4),
+    inset 0 0 25px rgba(30, 177, 246, 0.2);
+}
+
+.hero-message--glow .hero-message-main span {
+  text-shadow:
+    0 0 12px rgba(113, 250, 255, 0.9),
+    0 0 26px rgba(113, 250, 255, 0.7);
 }
 
 .hero::after {
@@ -442,6 +584,50 @@ main h1 {
 @keyframes drift {
   0% { transform: translate(0, 0); }
   100% { transform: translate(50px, 50px); }
+}
+
+@keyframes messageSweep {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes neonSweep {
+  0% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.65;
+  }
+  100% {
+    opacity: 0.2;
+  }
+}
+
+@keyframes orbFloat {
+  0% {
+    transform: translate3d(0, 0, 0) scale(0.9);
+    opacity: 0.35;
+  }
+  25% {
+    transform: translate3d(30px, -25px, 0) scale(1.05);
+    opacity: 0.55;
+  }
+  50% {
+    transform: translate3d(-25px, -40px, 0) scale(1.15);
+    opacity: 0.75;
+  }
+  75% {
+    transform: translate3d(-40px, 30px, 0) scale(1.05);
+    opacity: 0.55;
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale(0.9);
+    opacity: 0.35;
+  }
 }
 
 /* Cursor Trail Styles */
@@ -1367,7 +1553,7 @@ main h1 {
   
   .hero {
     flex-direction: column;
-    padding: 200px 40px 300px 40px;
+    padding: 200px 40px 320px 40px;
     gap: 40px;
     text-align: center;
   }
@@ -1383,6 +1569,30 @@ main h1 {
   
   .hero p {
     font-size: 1.1rem;
+  }
+
+  .hero-message {
+    top: 80px;
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(90vw, 520px);
+    gap: 12px;
+    padding: 16px 18px;
+  }
+
+  .hero-message-line {
+    font-size: 0.75rem;
+    letter-spacing: 1.5px;
+  }
+
+  .hero-message-main {
+    font-size: 1.8rem;
+  }
+
+  .hero-cat-astronaut {
+    width: 10vw;
+    transform: translate(-50%, 260%);
   }
 }
 
@@ -1460,5 +1670,32 @@ main h1 {
   
   .hero p {
     font-size: 1rem;
+  }
+
+  .hero-message {
+    top: 70px;
+    width: calc(100vw - 40px);
+    padding: 14px 16px;
+    gap: 10px;
+  }
+
+  .hero-message-line::before,
+  .hero-message-line::after {
+    height: 3px;
+  }
+
+  .hero-message-main {
+    font-size: 1.4rem;
+    letter-spacing: 2px;
+  }
+
+  .hero-message-main span::before,
+  .hero-message-main span::after {
+    height: 4px;
+  }
+
+  .hero-cat-astronaut {
+    width: 15vw;
+    transform: translate(-50%, 250%);
   }
 }
