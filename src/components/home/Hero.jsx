@@ -1,4 +1,5 @@
 import { generateStars } from '../../utils/stars';
+import catAstronaut from '../../assets/CatAstronaut.svg';
 
 export default function Hero() {
     const stars = generateStars(100);
@@ -20,6 +21,9 @@ export default function Hero() {
                         }}
                     />
                 ))}
+            </div>
+            <div className="hero-planet">
+                <img src={catAstronaut} alt="Cat Astronaut" className="hero-cat-astronaut" />
             </div>
             <div className="hero-text">
                 <p>Welcome to Anna's website!</p>
