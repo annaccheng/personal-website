@@ -1,15 +1,15 @@
 :root[data-theme="light"] {
-  --bg: #ffffff;
+  --bg: #FFFFFF;
   --text: #000000;
   --accent1: #BFEEFF;
-  --accent2: #FFBFF3;
-  --accent3: #71FAFF;
+  --accent2: #F683CA;
+  --accent3: #1EB1F6;
   --accent4: #879dff;
   --shadow1: rgba(255, 191, 243, 0.3);
   --hover1: rgba(255, 191, 243, 0.4);
   --shadow2: rgba(144, 211, 236, 0.3);
   --hover2: rgba(191, 238, 255, 0.4);
-  --hero-bg: url('./assets/HomePageLight.png');
+  --hero-bg: url('./assets/HomePageLight.svg');
   --projects-bg: url('./assets/projectPage/StarTrailLight.svg');
   --icon-color: #000000;
 }
@@ -25,7 +25,7 @@
   --hover1: rgba(178, 82, 216, 0.4);
   --shadow2: rgba(30, 177, 246, 0.3);
   --hover2: rgba(30, 177, 246, 0.4);
-  --hero-bg: url('./assets/HomePageDark.png');
+  --hero-bg: url('./assets/HomePageDark.svg');
   --projects-bg: url('./assets/projectPage/StarTrailDark.svg');
   --icon-color: #ffffff;
 }
@@ -80,7 +80,7 @@
 .about-page-container h1 {
   color: var(--text);
   margin-bottom: 1.5rem;
-  margin-top: 1rem;
+  margin-top: 100px;
   text-align: left;
 }
 
@@ -101,6 +101,7 @@
   display: flex;
   flex-direction: column;
   text-align: left;
+  max-width: 100%;
 }
 
 .about-me-text h1 {
@@ -127,7 +128,7 @@
   font-size: 1.1rem;
   line-height: 1.6;
   margin-bottom: 0;
-  max-width: 800px;
+  max-width: 100%;
   text-align: left;
 }
 
@@ -221,14 +222,10 @@
 .logo {
   width: 40px;
   height: 40px;
-  background-color: white;
-  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: bold;
-  color: #667eea;
-  font-size: 20px;
+  object-fit: contain;
 }
 
 main {
@@ -245,11 +242,12 @@ main h1 {
 }
 
 .hero {
-  padding: 150px 150px 350px 150px;
+  padding: 150px 150px 200px 150px;
+  position: relative;
+  overflow: hidden;
   margin: 0 auto;
   width: 100%;
-  min-height: 100vh;
-  position: relative;
+  min-height: 150vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -260,19 +258,28 @@ main h1 {
 .hero::before {
   content: '';
   position: absolute;
-  inset: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(270deg);
+  width: 150vh;
+  height: 100vw;
   background: var(--hero-bg) center / cover no-repeat;
+  background-size: cover;
   z-index: 0;
+  pointer-events: none;
 }
 
 .hero::after {
   content: '';
   position: absolute;
-  bottom: 0;
+  top: 0;
   left: 0;
   right: 0;
-  height: 40%;
-  background: linear-gradient(to bottom, transparent, var(--bg));
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    linear-gradient(to bottom, var(--bg) 0%, var(--bg) 5%, transparent 30%, transparent 60%, var(--bg) 100%);
   pointer-events: none;
   z-index: 4;
 }
@@ -287,15 +294,6 @@ main h1 {
   align-items: flex-start;
   text-align: left;
   max-width: 600px;
-}
-
-.hero-image {
-  position: relative;
-  z-index: 100;
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .hero h1 {
@@ -319,13 +317,6 @@ main h1 {
   line-height: 1.6;
   margin-bottom: 0;
   text-align: left;
-}
-
-.hero img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-  display: block;
 }
 
 .projects-carousel-section {
@@ -748,6 +739,50 @@ main h1 {
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
 }
 
+/* Cyberpunk Project Card Styles */
+.project-card.card-base {
+  background: rgba(15, 19, 46, 0.6); /* Semi-transparent dark background */
+  border: 2px solid var(--accent3); /* Neon outline */
+  border-radius: 0; /* Sharp corners */
+  overflow: visible; /* Allow accents to be visible outside */
+  box-shadow: 
+    0 0 10px rgba(30, 177, 246, 0.5),
+    0 0 20px rgba(30, 177, 246, 0.3),
+    inset 0 0 20px rgba(30, 177, 246, 0.1);
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  position: relative;
+}
+
+[data-theme="light"] .project-card.card-base {
+  background: rgba(255, 255, 255, 0.6); /* Semi-transparent light background */
+  border: 2px solid var(--accent3);
+  border-radius: 0; /* Sharp corners */
+  box-shadow: 
+    0 0 10px rgba(113, 250, 255, 0.5),
+    0 0 20px rgba(113, 250, 255, 0.3),
+    inset 0 0 20px rgba(113, 250, 255, 0.1);
+}
+
+.project-card.card-base:hover {
+  transform: translateY(-8px);
+  border-color: var(--accent2);
+  box-shadow: 
+    0 0 20px rgba(153, 82, 216, 0.8),
+    0 0 40px rgba(153, 82, 216, 0.5),
+    0 0 60px rgba(153, 82, 216, 0.3),
+    inset 0 0 30px rgba(153, 82, 216, 0.2);
+}
+
+[data-theme="light"] .project-card.card-base:hover {
+  border-color: var(--accent2);
+  box-shadow: 
+    0 0 20px rgba(255, 191, 243, 0.8),
+    0 0 40px rgba(255, 191, 243, 0.5),
+    0 0 60px rgba(255, 191, 243, 0.3),
+    inset 0 0 30px rgba(255, 191, 243, 0.2);
+}
+
 .card-content {
   display: flex;
   flex-direction: column;
@@ -813,16 +848,36 @@ main h1 {
   border-radius: 20px;
   font-size: 0.85rem;
   font-weight: 500;
-  background: linear-gradient(135deg, var(--accent4), var(--accent1));
-  color: var(--text);
+  background: rgba(30, 177, 246, 0.2);
+  border: 1px solid var(--accent3);
+  color: var(--accent3);
   white-space: nowrap;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 
+    0 0 8px rgba(30, 177, 246, 0.4),
+    inset 0 0 8px rgba(30, 177, 246, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  text-shadow: 0 0 6px rgba(30, 177, 246, 0.6);
+}
+
+[data-theme="light"] .card-tag {
+  background: rgba(113, 250, 255, 0.2);
+  border: 1px solid var(--accent3);
+  color: var(--accent3);
+  box-shadow: 
+    0 0 8px rgba(113, 250, 255, 0.4),
+    inset 0 0 8px rgba(113, 250, 255, 0.1);
+  text-shadow: 0 0 6px rgba(113, 250, 255, 0.6);
 }
 
 .card-base:hover .card-tag {
   transform: scale(1.05);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  border-color: var(--accent2);
+  color: var(--accent2);
+}
+
+[data-theme="light"] .card-base:hover .card-tag {
+  border-color: var(--accent2);
+  color: var(--accent2);
 }
 
 /* Experience Card Styles */
@@ -830,6 +885,50 @@ main h1 {
   grid-column: 2;
   width: 100%;
   max-width: 100%;
+}
+
+/* Cyberpunk Experience Card Styles */
+.experience-card.card-base {
+  background: rgba(15, 19, 46, 0.6); /* Semi-transparent dark background */
+  border: 2px solid var(--accent3); /* Neon outline */
+  border-radius: 0; /* Sharp corners */
+  overflow: visible; /* Allow accents to be visible outside */
+  box-shadow: 
+    0 0 10px rgba(30, 177, 246, 0.5),
+    0 0 20px rgba(30, 177, 246, 0.3),
+    inset 0 0 20px rgba(30, 177, 246, 0.1);
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  position: relative;
+}
+
+[data-theme="light"] .experience-card.card-base {
+  background: rgba(255, 255, 255, 0.6); /* Semi-transparent light background */
+  border: 2px solid var(--accent3);
+  border-radius: 0; /* Sharp corners */
+  box-shadow: 
+    0 0 10px rgba(113, 250, 255, 0.5),
+    0 0 20px rgba(113, 250, 255, 0.3),
+    inset 0 0 20px rgba(113, 250, 255, 0.1);
+}
+
+.experience-card.card-base:hover {
+  transform: translateY(-8px);
+  border-color: var(--accent2);
+  box-shadow: 
+    0 0 20px rgba(153, 82, 216, 0.8),
+    0 0 40px rgba(153, 82, 216, 0.5),
+    0 0 60px rgba(153, 82, 216, 0.3),
+    inset 0 0 30px rgba(153, 82, 216, 0.2);
+}
+
+[data-theme="light"] .experience-card.card-base:hover {
+  border-color: var(--accent2);
+  box-shadow: 
+    0 0 20px rgba(255, 191, 243, 0.8),
+    0 0 40px rgba(255, 191, 243, 0.5),
+    0 0 60px rgba(255, 191, 243, 0.3),
+    inset 0 0 30px rgba(255, 191, 243, 0.2);
 }
 
 .experience-date-pill {
@@ -842,31 +941,92 @@ main h1 {
   border-radius: 20px;
   font-size: 0.85rem;
   font-weight: 500;
-  background: linear-gradient(135deg, var(--accent4), var(--accent2));
-  color: var(--text);
+  background: rgba(30, 177, 246, 0.2);
+  border: 1px solid var(--accent3);
+  color: var(--accent3);
   white-space: nowrap;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 
+    0 0 8px rgba(30, 177, 246, 0.4),
+    inset 0 0 8px rgba(30, 177, 246, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  text-shadow: 0 0 6px rgba(30, 177, 246, 0.6);
+}
+
+[data-theme="light"] .experience-date-pill span {
+  background: rgba(113, 250, 255, 0.2);
+  border: 1px solid var(--accent3);
+  color: var(--accent3);
+  box-shadow: 
+    0 0 8px rgba(113, 250, 255, 0.4),
+    inset 0 0 8px rgba(113, 250, 255, 0.1);
+  text-shadow: 0 0 6px rgba(113, 250, 255, 0.6);
 }
 
 .experience-card:hover .experience-date-pill span {
   transform: scale(1.05);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  border-color: var(--accent2);
+  color: var(--accent2);
+  box-shadow: 
+    0 0 12px rgba(153, 82, 216, 0.6),
+    0 0 20px rgba(153, 82, 216, 0.4),
+    inset 0 0 10px rgba(153, 82, 216, 0.2);
+  text-shadow: 
+    0 0 8px rgba(153, 82, 216, 0.8),
+    0 0 15px rgba(153, 82, 216, 0.5);
+}
+
+[data-theme="light"] .experience-card:hover .experience-date-pill span {
+  border-color: var(--accent2);
+  color: var(--accent2);
+  box-shadow: 
+    0 0 12px rgba(255, 191, 243, 0.6),
+    0 0 20px rgba(255, 191, 243, 0.4),
+    inset 0 0 10px rgba(255, 191, 243, 0.2);
+  text-shadow: 
+    0 0 8px rgba(255, 191, 243, 0.8),
+    0 0 15px rgba(255, 191, 243, 0.5);
 }
 
 /* Project Card Styles - Extends base */
 
 .project-image-container {
   width: 100%;
-  border-radius: 12px;
+  border-radius: 0; /* Sharp corners */
   overflow: hidden;
+  border: 1px solid var(--accent3);
+  box-shadow: 
+    0 0 8px rgba(30, 177, 246, 0.4),
+    inset 0 0 10px rgba(30, 177, 246, 0.1);
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+[data-theme="light"] .project-image-container {
+  border: 1px solid var(--accent3);
+  box-shadow: 
+    0 0 8px rgba(113, 250, 255, 0.4),
+    inset 0 0 10px rgba(113, 250, 255, 0.1);
+}
+
+.project-card:hover .project-image-container {
+  border-color: var(--accent2);
+  box-shadow: 
+    0 0 15px rgba(153, 82, 216, 0.6),
+    inset 0 0 15px rgba(153, 82, 216, 0.2);
+}
+
+[data-theme="light"] .project-card:hover .project-image-container {
+  border-color: var(--accent2);
+  box-shadow: 
+    0 0 15px rgba(255, 191, 243, 0.6),
+    inset 0 0 15px rgba(255, 191, 243, 0.2);
 }
 
 .project-image {
   width: 100%;
   height: auto;
   display: block;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  filter: brightness(0.95) contrast(1.05);
 }
 
 .project-card {
@@ -883,6 +1043,7 @@ main h1 {
 
 .project-card:hover .project-image {
   transform: scale(1.05);
+  filter: brightness(1.1) contrast(1.1);
 }
 
 .project-links {
@@ -891,16 +1052,32 @@ main h1 {
 }
 
 .project-link {
-  color: var(--text);
+  color: var(--accent3);
   text-decoration: none;
   font-weight: 500;
   display: inline-block;
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition: color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease;
+  text-shadow: 0 0 8px rgba(30, 177, 246, 0.5);
+}
+
+[data-theme="light"] .project-link {
+  color: var(--accent3);
+  text-shadow: 0 0 8px rgba(113, 250, 255, 0.5);
 }
 
 .project-link:hover {
-  opacity: 0.8;
+  color: var(--accent2);
   transform: translateX(4px);
+  text-shadow: 
+    0 0 10px rgba(153, 82, 216, 0.8),
+    0 0 20px rgba(153, 82, 216, 0.5);
+}
+
+[data-theme="light"] .project-link:hover {
+  color: var(--accent2);
+  text-shadow: 
+    0 0 10px rgba(255, 191, 243, 0.8),
+    0 0 20px rgba(255, 191, 243, 0.5);
 }
 
 .project-category {
@@ -916,16 +1093,177 @@ main h1 {
   border-radius: 20px;
   font-size: 0.85rem;
   font-weight: 500;
-  background: linear-gradient(135deg, var(--accent4), var(--accent2));
-  color: var(--text);
+  background: rgba(30, 177, 246, 0.2);
+  border: 1px solid var(--accent3);
+  color: var(--accent3);
   white-space: nowrap;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 
+    0 0 8px rgba(30, 177, 246, 0.4),
+    inset 0 0 8px rgba(30, 177, 246, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  text-shadow: 0 0 6px rgba(30, 177, 246, 0.6);
+}
+
+[data-theme="light"] .project-category span {
+  background: rgba(113, 250, 255, 0.2);
+  border: 1px solid var(--accent3);
+  color: var(--accent3);
+  box-shadow: 
+    0 0 8px rgba(113, 250, 255, 0.4),
+    inset 0 0 8px rgba(113, 250, 255, 0.1);
+  text-shadow: 0 0 6px rgba(113, 250, 255, 0.6);
 }
 
 .project-card:hover .project-category span {
   transform: scale(1.05);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  border-color: var(--accent2);
+  color: var(--accent2);
+  box-shadow: 
+    0 0 12px rgba(153, 82, 216, 0.6),
+    0 0 20px rgba(153, 82, 216, 0.4),
+    inset 0 0 10px rgba(153, 82, 216, 0.2);
+  text-shadow: 
+    0 0 8px rgba(153, 82, 216, 0.8),
+    0 0 15px rgba(153, 82, 216, 0.5);
+}
+
+[data-theme="light"] .project-card:hover .project-category span {
+  border-color: var(--accent2);
+  color: var(--accent2);
+  box-shadow: 
+    0 0 12px rgba(255, 191, 243, 0.6),
+    0 0 20px rgba(255, 191, 243, 0.4),
+    inset 0 0 10px rgba(255, 191, 243, 0.2);
+  text-shadow: 
+    0 0 8px rgba(255, 191, 243, 0.8),
+    0 0 15px rgba(255, 191, 243, 0.5);
+}
+
+/* L-shaped accent decorations - positioned outside the card */
+.l-accent {
+  position: absolute;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.l-accent-top-left {
+  top: -8px;
+  left: -8px;
+  width: 40px;
+  height: 40px;
+}
+
+.l-accent-top-left::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 25px;
+  background: var(--accent2);
+  box-shadow: 
+    0 0 8px var(--accent2),
+    0 0 15px var(--accent2);
+}
+
+.l-accent-top-left::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 25px;
+  height: 3px;
+  background: var(--accent2);
+  box-shadow: 
+    0 0 8px var(--accent2),
+    0 0 15px var(--accent2);
+}
+
+.l-accent-bottom-right {
+  bottom: -8px;
+  right: -8px;
+  width: 40px;
+  height: 40px;
+}
+
+.l-accent-bottom-right::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 3px;
+  height: 25px;
+  background: var(--accent2);
+  box-shadow: 
+    0 0 8px var(--accent2),
+    0 0 15px var(--accent2);
+}
+
+.l-accent-bottom-right::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 25px;
+  height: 3px;
+  background: var(--accent2);
+  box-shadow: 
+    0 0 8px var(--accent2),
+    0 0 15px var(--accent2);
+}
+
+[data-theme="light"] .l-accent-top-left::before,
+[data-theme="light"] .l-accent-top-left::after,
+[data-theme="light"] .l-accent-bottom-right::before,
+[data-theme="light"] .l-accent-bottom-right::after {
+  background: var(--accent2);
+  box-shadow: 
+    0 0 8px var(--accent2),
+    0 0 15px var(--accent2);
+}
+
+/* Cyberpunk Education Card Styles */
+.education-card.card-base {
+  background: rgba(15, 19, 46, 0.6); /* Semi-transparent dark background */
+  border: 2px solid var(--accent3); /* Neon outline */
+  border-radius: 0; /* Sharp corners */
+  overflow: visible; /* Allow accents to be visible outside */
+  box-shadow: 
+    0 0 10px rgba(30, 177, 246, 0.5),
+    0 0 20px rgba(30, 177, 246, 0.3),
+    inset 0 0 20px rgba(30, 177, 246, 0.1);
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  position: relative;
+}
+
+[data-theme="light"] .education-card.card-base {
+  background: rgba(255, 255, 255, 0.6); /* Semi-transparent light background */
+  border: 2px solid var(--accent3);
+  border-radius: 0; /* Sharp corners */
+  box-shadow: 
+    0 0 10px rgba(113, 250, 255, 0.5),
+    0 0 20px rgba(113, 250, 255, 0.3),
+    inset 0 0 20px rgba(113, 250, 255, 0.1);
+}
+
+.education-card.card-base:hover {
+  transform: translateY(-8px);
+  border-color: var(--accent2);
+  box-shadow: 
+    0 0 20px rgba(153, 82, 216, 0.8),
+    0 0 40px rgba(153, 82, 216, 0.5),
+    0 0 60px rgba(153, 82, 216, 0.3),
+    inset 0 0 30px rgba(153, 82, 216, 0.2);
+}
+
+[data-theme="light"] .education-card.card-base:hover {
+  border-color: var(--accent2);
+  box-shadow: 
+    0 0 20px rgba(255, 191, 243, 0.8),
+    0 0 40px rgba(255, 191, 243, 0.5),
+    0 0 60px rgba(255, 191, 243, 0.3),
+    inset 0 0 30px rgba(255, 191, 243, 0.2);
 }
 
 /* Project-specific styles - project-title and project-tags now use card-title and card-tags */
@@ -1027,11 +1365,6 @@ main h1 {
   .hero p {
     font-size: 1.1rem;
   }
-  
-  .hero img {
-    width: 200px;
-    height: 200px;
-  }
 }
 
 @media (max-width: 480px) {
@@ -1108,10 +1441,5 @@ main h1 {
   
   .hero p {
     font-size: 1rem;
-  }
-  
-  .hero img {
-    width: 180px;
-    height: 180px;
   }
 }

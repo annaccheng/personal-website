@@ -4,6 +4,8 @@ export default function ExperienceCard({ experience }) {
 
     return (
         <div className="experience-card card-base">
+            <div className="l-accent l-accent-top-left"></div>
+            <div className="l-accent l-accent-bottom-right"></div>
             <div className="experience-date-pill">
                 <span>{dateRange}</span>
             </div>

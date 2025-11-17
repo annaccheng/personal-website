@@ -4,6 +4,7 @@ import EducationCard from '../components/about/EducationCard';
 import experienceData from '../data/experience.json';
 import educationData from '../data/education.json';
 import profilePhoto from '../assets/ProfilePhoto.png';
+import { ReactTyped } from 'react-typed';
 
 export default function About() {
     const [experience, setExperience] = useState([]);
@@ -19,7 +20,16 @@ export default function About() {
             <div className="about-page-container">
                 <div className="about-me-section">
                     <div className="about-me-text">
-                        <h1>About Me</h1>
+                        <h1>
+                            <ReactTyped
+                                strings={['Hi! I\'m Anna 🚀']}
+                                typeSpeed={80}
+                                backSpeed={0}
+                                showCursor
+                                cursorChar="|"
+                                loop={false}
+                            />
+                        </h1>
                         <p className="about-intro">
                             I'm a Product Manager that loves human-centered design and dabbles in a bit of coding and ML as well. 
                             I'm a rising senior at UC Berkeley studying Computer Science and Business. I'm passionate about building 

@@ -1,12 +1,13 @@
 import { Link } from 'react-router-dom';
 import LightDark from './LightDark';
+import logo from '../assets/Logo.svg';
 
 export default function Header() {
     return (
         <header className="header">
             <div className="header-section">
                 <Link to="/" className="header-pill header-pill--logo">
-                    <div className="logo">A</div>
+                    <img src={logo} alt="Logo" className="logo" />
                     <h1 className="header-text">Anna</h1>
                 </Link>
             </div>

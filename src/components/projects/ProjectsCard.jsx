@@ -3,6 +3,8 @@ export default function ProjectsCard({ project }) {
 
     return (
         <div className="project-card card-base">
+            <div className="l-accent l-accent-top-left"></div>
+            <div className="l-accent l-accent-bottom-right"></div>
             <div className="project-image-container">
                 <img src={photo} alt={title} className="project-image" />
             </div>
@@ -18,12 +20,12 @@ export default function ProjectsCard({ project }) {
                 )}
             </div>
             <div className="project-category">
-                    {category.map((category) => (
+                    {category && Array.isArray(category) && category.map((category) => (
                         <span key={category} className="project-category">{category}</span>
                     ))}
                 </div>
             <div className="card-tags">
-                {tags.map((tag) => (
+                {tags && Array.isArray(tags) && tags.map((tag) => (
                     <span key={tag} className="card-tag">{tag}</span>
                 ))}
             </div>

@@ -1,5 +1,3 @@
-import { ReactTyped } from 'react-typed';
-import profilePhoto from '../../assets/ProfilePhoto.png';
 import { generateStars } from '../../utils/stars';
 
 export default function Hero() {
@@ -24,20 +22,7 @@ export default function Hero() {
                 ))}
             </div>
             <div className="hero-text">
-                <h1>
-                    <ReactTyped
-                        strings={['Hi! I\'m Anna 🚀']}
-                        typeSpeed={80}
-                        backSpeed={0}
-                        showCursor
-                        cursorChar="|"
-                        loop={false}
-                    />
-                </h1>
-                <p>I'm a Product Manager that loves human-centered design and working with technical products to drive impact</p>
-            </div>
-            <div className="hero-image">
-                <img src={profilePhoto} alt="Anna" />
+                <p>Welcome to Anna's website!</p>
             </div>
         </div>
     )

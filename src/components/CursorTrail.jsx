@@ -35,14 +35,67 @@ export default function CursorTrail() {
       attributeFilter: ['data-theme']
     });
 
-    // Create a new particle (star)
+    // Draw a star shape
+    const drawStar = (ctx, x, y, size, points, rotation) => {
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.rotate(rotation);
+      ctx.beginPath();
+      
+      const outerRadius = size;
+      const innerRadius = size * 0.4;
+      
+      for (let i = 0; i < points * 2; i++) {
+        const radius = i % 2 === 0 ? outerRadius : innerRadius;
+        const angle = (i * Math.PI) / points;
+        const px = Math.cos(angle) * radius;
+        const py = Math.sin(angle) * radius;
+        
+        if (i === 0) {
+          ctx.moveTo(px, py);
+        } else {
+          ctx.lineTo(px, py);
+        }
+      }
+      
+      ctx.closePath();
+      ctx.restore();
+    };
+
+    // Draw a cross/sparkle shape
+    const drawCross = (ctx, x, y, size, rotation) => {
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.rotate(rotation);
+      ctx.beginPath();
+      
+      const halfSize = size * 0.5;
+      ctx.moveTo(-halfSize, 0);
+      ctx.lineTo(halfSize, 0);
+      ctx.moveTo(0, -halfSize);
+      ctx.lineTo(0, halfSize);
+      
+      ctx.restore();
+    };
+
+    // Create a new particle (sparkle)
     const createParticle = (x, y) => {
       // Random angle for spreading effect
-      const angle = Math.random() * Math.PI * 2;
+      const angle = Math.random() * Math.PI * 1;
       // Random velocity for natural movement
       const velocity = Math.random() * 1.5 + 0.3;
-      // Random size for variation
-      const size = Math.random() * 1.5 + 0.5;
+      // Random size for variation (smaller for more sparkle)
+      const size = Math.random() * 2.5 + 1;
+      // Random rotation speed for twinkling
+      const rotationSpeed = (Math.random() - 0.5) * 0.15;
+      // Random twinkle phase
+      const twinklePhase = Math.random() * Math.PI * 2;
+      // Random twinkle speed
+      const twinkleSpeed = Math.random() * 0.12 + 0.06;
+      // Random shape type (0 = star, 1 = cross, 2 = circle)
+      const shapeType = Math.floor(Math.random() * 3);
+      // Star points (4 or 6)
+      const points = Math.random() < 0.5 ? 4 : 6;
       
       return {
         x,
@@ -50,6 +103,12 @@ export default function CursorTrail() {
         vx: Math.cos(angle) * velocity,
         vy: Math.sin(angle) * velocity,
         size,
+        rotation: Math.random() * Math.PI * 2,
+        rotationSpeed,
+        twinklePhase,
+        twinkleSpeed,
+        shapeType,
+        points,
         life: 1.0, // Start at full opacity
         decay: Math.random() * 0.008 + 0.005, // Random decay rate for varied fade
       };
@@ -66,9 +125,8 @@ export default function CursorTrail() {
       const distance = Math.sqrt(dx * dx + dy * dy);
       
       if (distance > 1) { // Only create particles if moved enough
-        // Create particles based on movement distance for smoother trail
-        const particleCount = Math.min(Math.floor(distance / 2) + 1, 6);
-        // console.log(particleCount);
+        // Create more particles for glitter effect
+        const particleCount = Math.min(Math.floor(distance / 1) + 2, 15);
 
         for (let i = 0; i < particleCount; i++) {
           // Add slight offset for trail effect
@@ -98,7 +156,7 @@ export default function CursorTrail() {
       for (let i = particlesRef.current.length - 1; i >= 0; i--) {
         const particle = particlesRef.current[i];
         
-        // Update position (stars spread out)
+        // Update position (sparkles spread out)
         particle.x += particle.vx;
         particle.y += particle.vy;
         
@@ -106,32 +164,72 @@ export default function CursorTrail() {
         particle.vx *= 0.98;
         particle.vy *= 0.98;
         
+        // Update rotation for twinkling effect
+        particle.rotation += particle.rotationSpeed;
+        
+        // Update twinkle phase
+        particle.twinklePhase += particle.twinkleSpeed;
+        
         // Update life (opacity) - fade out over time
         particle.life -= particle.decay;
         
         // Draw particle
         if (particle.life > 0) {
-          const opacity = Math.max(0, particle.life);
+          const baseOpacity = Math.max(0, particle.life);
+          // Add twinkling effect (pulsing opacity)
+          const twinkle = Math.sin(particle.twinklePhase) * 0.3 + 0.7; // Oscillate between 0.4 and 1.0
+          const opacity = baseOpacity * twinkle;
           
           // Get current theme
           const theme = themeRef.current;
           
-          // Draw star with glow effect
           ctx.save();
-          ctx.beginPath();
-          ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
           
+          // Set glow/shadow properties
+          const glowIntensity = particle.size * 6;
           if (theme === 'light') {
-            ctx.fillStyle = `rgba(255, 191, 243, ${opacity * 0.9})`;
-            ctx.shadowBlur = particle.size * 8;
-            ctx.shadowColor = 'rgba(255, 191, 243, 0.8)';
+            ctx.shadowBlur = glowIntensity;
+            ctx.shadowColor = 'rgba(255, 191, 243, 0.9)';
+            ctx.strokeStyle = `rgba(255, 191, 243, ${opacity * 0.9})`;
+            ctx.fillStyle = `rgba(255, 191, 243, ${opacity * 0.7})`;
           } else {
-            ctx.fillStyle = `rgba(255, 255, 255, ${opacity * 0.95})`;
-            ctx.shadowBlur = particle.size * 8;
-            ctx.shadowColor = 'rgba(255, 255, 255, 0.8)';
+            ctx.shadowBlur = glowIntensity;
+            ctx.shadowColor = 'rgba(255, 255, 255, 0.9)';
+            ctx.strokeStyle = `rgba(255, 255, 255, ${opacity * 0.95})`;
+            ctx.fillStyle = `rgba(255, 255, 255, ${opacity * 0.8})`;
           }
           
-          ctx.fill();
+          ctx.lineWidth = Math.max(1, particle.size * 0.3);
+          
+          // Draw different shapes for variety
+          if (particle.shapeType === 0) {
+            // Draw star
+            drawStar(ctx, particle.x, particle.y, particle.size, particle.points, particle.rotation);
+            ctx.fill();
+            ctx.stroke();
+          } else if (particle.shapeType === 1) {
+            // Draw cross/sparkle
+            drawCross(ctx, particle.x, particle.y, particle.size, particle.rotation);
+            ctx.lineCap = 'round';
+            ctx.stroke();
+            // Add small circle in center
+            ctx.beginPath();
+            ctx.arc(particle.x, particle.y, particle.size * 0.2, 0, Math.PI * 2);
+            ctx.fill();
+          } else {
+            // Draw circle with sparkle lines
+            ctx.beginPath();
+            ctx.arc(particle.x, particle.y, particle.size * 0.6, 0, Math.PI * 2);
+            ctx.fill();
+            // Add small cross on top
+            ctx.beginPath();
+            ctx.moveTo(particle.x - particle.size * 0.3, particle.y);
+            ctx.lineTo(particle.x + particle.size * 0.3, particle.y);
+            ctx.moveTo(particle.x, particle.y - particle.size * 0.3);
+            ctx.lineTo(particle.x, particle.y + particle.size * 0.3);
+            ctx.stroke();
+          }
+          
           ctx.restore();
         }
         
@@ -141,9 +239,9 @@ export default function CursorTrail() {
         }
       }
       
-      // Limit particle count for performance (keep trail manageable)
-      if (particlesRef.current.length > 120) {
-        particlesRef.current = particlesRef.current.slice(-80);
+      // Limit particle count for performance (increased for glitter effect)
+      if (particlesRef.current.length > 150) {
+        particlesRef.current = particlesRef.current.slice(-100);
       }
       
       animationFrameRef.current = requestAnimationFrame(animate);

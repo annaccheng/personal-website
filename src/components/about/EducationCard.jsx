@@ -3,6 +3,8 @@ export default function EducationCard({ education }) {
 
     return (
         <div className="education-card card-base">
+            <div className="l-accent l-accent-top-left"></div>
+            <div className="l-accent l-accent-bottom-right"></div>
             <div className="card-content">
                 <h3 className="card-title">{degree}</h3>
                 <div className="card-meta">
