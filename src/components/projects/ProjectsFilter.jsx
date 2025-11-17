@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { fetchDistinctCategories } from '../../services/api';
 
 export default function ProjectsFilter({ onFilterChange, selectedCategories = [] }) {
@@ -22,8 +22,8 @@ export default function ProjectsFilter({ onFilterChange, selectedCategories = []
         loadCategories();
     }, []);
 
-    const handleCategoryToggle = (category) => {
-        const currentSelection = Array.isArray(selectedCategories) ? selectedCategories : [];
+    const handleCategoryToggle = useCallback((category) => {
+        const currentSelection = selectedCategories || [];
         
         if (currentSelection.includes(category)) {
             // Remove category if already selected
@@ -34,11 +34,11 @@ export default function ProjectsFilter({ onFilterChange, selectedCategories = []
             const updated = [...currentSelection, category];
             onFilterChange(updated);
         }
-    };
+    }, [selectedCategories, onFilterChange]);
 
-    const handleClearAll = () => {
+    const handleClearAll = useCallback(() => {
         onFilterChange(null);
-    };
+    }, [onFilterChange]);
 
     if (loading) {
         return <div className="loading-state">Loading categories...</div>;
@@ -48,7 +48,7 @@ export default function ProjectsFilter({ onFilterChange, selectedCategories = []
         return <div className="error-state">Error: {error}</div>;
     }
 
-    const currentSelection = Array.isArray(selectedCategories) ? selectedCategories : [];
+    const currentSelection = selectedCategories || [];
     const hasSelections = currentSelection.length > 0;
 
     return (

@@ -1,8 +1,9 @@
+import { useMemo } from 'react';
 import { generateStars } from '../../utils/stars';
 import catAstronaut from '../../assets/CatAstronaut.svg';
 
 export default function Hero() {
-    const stars = generateStars(100);
+    const stars = useMemo(() => generateStars(100), []);
 
     return (
         <div className="hero">

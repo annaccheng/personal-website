@@ -31,7 +31,7 @@ export async function fetchDistinctCategories() {
     
     // Extract unique categories and remove null/undefined values
     const uniqueCategories = [...new Set((data ?? []).flatMap(p => p.category ?? []))].sort();
-    return uniqueCategories.sort(); // Sort alphabetically
+    return uniqueCategories;
 }
 
 // Fetch projects filtered by category

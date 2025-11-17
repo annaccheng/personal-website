@@ -1,7 +1,7 @@
 import ProjectsCard from '../components/projects/ProjectsCard';
 import ProjectsFilter from '../components/projects/ProjectsFilter';
 import { fetchProjects, fetchProjectsByCategory } from '../services/api';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import ufoImage from '../assets/projectPage/Ufo.svg';
 
 export default function Projects() {
@@ -25,7 +25,7 @@ export default function Projects() {
                 }
                 setError(null);
                 
-                const data = selectedCategories && selectedCategories.length > 0
+                const data = selectedCategories?.length > 0
                     ? await fetchProjectsByCategory(selectedCategories)
                     : await fetchProjects();
                 
@@ -42,9 +42,9 @@ export default function Projects() {
         loadProjects();
     }, [selectedCategories]);
 
-    const handleFilterChange = (categories) => {
+    const handleFilterChange = useCallback((categories) => {
         setSelectedCategories(categories || []);
-    };
+    }, []);
 
     // Show full loading state only on initial load
     if (loading && projects.length === 0) {

@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import ExperienceCard from '../components/about/ExperienceCard';
 import EducationCard from '../components/about/EducationCard';
 import experienceData from '../data/experience.json';
@@ -7,16 +6,14 @@ import profilePhoto from '../assets/ProfilePhoto.png';
 import { ReactTyped } from 'react-typed';
 
 export default function About() {
-    const [experience, setExperience] = useState([]);
-    const [education, setEducation] = useState([]);
-
-    useEffect(() => {
-        setExperience(experienceData);
-        setEducation(educationData);
-    }, []);
 
     return (
         <div className="about-page">
+            <div className="about-comets">
+                <div className="about-comet about-comet--one"></div>
+                <div className="about-comet about-comet--two"></div>
+                <div className="about-comet about-comet--three"></div>
+            </div>
             <div className="about-page-container">
                 <div className="about-me-section">
                     <div className="about-me-text">
@@ -31,10 +28,11 @@ export default function About() {
                             />
                         </h1>
                         <p className="about-intro">
-                            I'm a Product Manager that loves human-centered design and dabbles in a bit of coding and ML as well. 
-                            I'm a rising senior at UC Berkeley studying Computer Science and Business. I'm passionate about building 
-                            scalable products, advancing how we build with AI, and solving difficult problems. I also love puzzles in 
-                            general (mega NYT mini, crossword, and sudoku fiend), art, film photography, and hiking!
+                            I'm a rising senior at UC Berkeley studying Computer Science and Business. I started my journey in product management 
+                            in business strategy and consulting, but quickly fell in love with the technical side of coding and ML. 
+                            I'm passionate about Human Computer Interaction, building scrappy products, and creating software with meaningful impact.
+                            I love solving difficult problems, both in product and in life. I'm a big fan of puzzles (NYT mini, crossword, sudoku, you name it). 
+                            In my free time I also enjoy art, fashion design, film photography, and hiking!
                         </p>
                     </div>
                     <div className="about-me-image">
@@ -44,7 +42,7 @@ export default function About() {
                 
                 <h1>Professional Experience</h1>
                 <div className="experience-section">
-                    {experience.map((exp) => (
+                    {experienceData.map((exp) => (
                         <div key={exp.id} className="experience-row">
                             <div className="timeline-node"></div>
                             <ExperienceCard experience={exp} />
@@ -54,7 +52,7 @@ export default function About() {
                 
                 <h1>Education</h1>
                 <div className="education-grid">
-                    {education.map((edu) => (
+                    {educationData.map((edu) => (
                         <EducationCard key={edu.id} education={edu} />
                     ))}
                 </div>

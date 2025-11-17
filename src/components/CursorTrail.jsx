@@ -5,7 +5,6 @@ export default function CursorTrail() {
   const particlesRef = useRef([]);
   const animationFrameRef = useRef(null);
   const lastMouseRef = useRef({ x: 0, y: 0 });
-  const timeoutRef = useRef(null);
   const themeRef = useRef('dark');
 
   useEffect(() => {
@@ -137,14 +136,6 @@ export default function CursorTrail() {
         }
         
         lastMouseRef.current = { x, y };
-        
-        // Clear existing timeout
-        if (timeoutRef.current) {
-          clearTimeout(timeoutRef.current);
-        }
-        
-        // When movement stops, particles will naturally fade out
-        // No need to explicitly stop creation - they just won't be created
       }
     };
 
@@ -260,9 +251,6 @@ export default function CursorTrail() {
       themeObserver.disconnect();
       if (animationFrameRef.current) {
         cancelAnimationFrame(animationFrameRef.current);
-      }
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current);
       }
     };
   }, []);

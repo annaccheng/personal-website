@@ -1,4 +1,6 @@
-export default function ProjectsCard({ project }) {
+import { memo } from 'react';
+
+function ProjectsCard({ project }) {
     const { title, description, photo, tags, category, link } = project;
 
     return (
@@ -19,11 +21,13 @@ export default function ProjectsCard({ project }) {
                     </div>
                 )}
             </div>
-            <div className="project-category">
-                    {category && Array.isArray(category) && category.map((category) => (
-                        <span key={category} className="project-category">{category}</span>
+            {category && Array.isArray(category) && category.length > 0 && (
+                <div className="project-category">
+                    {category.map((cat) => (
+                        <span key={cat} className="project-category-tag">{cat}</span>
                     ))}
                 </div>
+            )}
             <div className="card-tags">
                 {tags && Array.isArray(tags) && tags.map((tag) => (
                     <span key={tag} className="card-tag">{tag}</span>
@@ -32,3 +36,5 @@ export default function ProjectsCard({ project }) {
         </div>
     )
 }
+
+export default memo(ProjectsCard);

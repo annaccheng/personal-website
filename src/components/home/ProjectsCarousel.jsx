@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import ProjectsCard from '../projects/ProjectsCard';
 import { fetchTopProjects } from '../../services/api';
 
@@ -25,8 +25,8 @@ export default function ProjectsCarousel({ numProjects = 6 }) {
         loadProjects();
     }, [numProjects]);
 
-    // Scroll functions
-    const scrollLeft = () => {
+    // Scroll functions - memoized to prevent recreation on every render
+    const scrollLeft = useCallback(() => {
         if (scrollContainerRef.current) {
             const scrollAmount = scrollContainerRef.current.clientWidth;
             scrollContainerRef.current.scrollBy({
@@ -34,9 +34,9 @@ export default function ProjectsCarousel({ numProjects = 6 }) {
                 behavior: 'smooth'
             });
         }
-    };
+    }, []);
 
-    const scrollRight = () => {
+    const scrollRight = useCallback(() => {
         if (scrollContainerRef.current) {
             const scrollAmount = scrollContainerRef.current.clientWidth;
             scrollContainerRef.current.scrollBy({
@@ -44,7 +44,7 @@ export default function ProjectsCarousel({ numProjects = 6 }) {
                 behavior: 'smooth'
             });
         }
-    };
+    }, []);
 
     if (loading) {
         return <div className="loading-state">Loading projects...</div>;

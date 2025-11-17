@@ -1,4 +1,6 @@
-export default function EducationCard({ education }) {
+import { memo } from 'react';
+
+function EducationCard({ education }) {
     const { degree, school, location, startDate, endDate, gpa } = education;
 
     return (
@@ -19,4 +21,6 @@ export default function EducationCard({ education }) {
         </div>
     );
 }
+
+export default memo(EducationCard);
 

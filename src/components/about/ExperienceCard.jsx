@@ -1,4 +1,6 @@
-export default function ExperienceCard({ experience }) {
+import { memo } from 'react';
+
+function ExperienceCard({ experience }) {
     const { title, company, location, description, tags, startDate, endDate } = experience;
     const dateRange = `${startDate} - ${endDate}`;
 
@@ -29,4 +31,6 @@ export default function ExperienceCard({ experience }) {
         </div>
     );
 }
+
+export default memo(ExperienceCard);
 

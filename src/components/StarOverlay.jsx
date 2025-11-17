@@ -1,7 +1,8 @@
+import { useMemo } from 'react';
 import { generateStars } from '../utils/stars';
 
 export default function StarOverlay() {
-    const stars = generateStars(100);
+    const stars = useMemo(() => generateStars(100), []);
 
     return (
         <div className="star-overlay">
