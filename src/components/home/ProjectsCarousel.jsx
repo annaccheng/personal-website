@@ -60,6 +60,7 @@ export default function ProjectsCarousel({ numProjects = 6 }) {
 
     return (
         <section className="projects-carousel-section">
+            <h1>Projects</h1>
             <div className="projects-carousel-container">
                 {/* Left Navigation Button */}
                 <button 
@@ -67,22 +68,24 @@ export default function ProjectsCarousel({ numProjects = 6 }) {
                     aria-label="Scroll left"
                     className="carousel-nav-btn carousel-nav-btn-left"
                 >
-                    ←
+                    &lt;&lt;
                 </button>
 
-                {/* Scrollable Container */}
-                <div
-                    ref={scrollContainerRef}
-                    className="carousel-scroll-container"
-                >
-                    {projects.map((project) => (
-                        <div
-                            key={project.id}
-                            className="carousel-item"
-                        >
-                            <ProjectsCard project={project} />
-                        </div>
-                    ))}
+                {/* Scrollable Container with fade */}
+                <div className="carousel-wrapper">
+                    <div
+                        ref={scrollContainerRef}
+                        className="carousel-scroll-container"
+                    >
+                        {projects.map((project) => (
+                            <div
+                                key={project.id}
+                                className="carousel-item"
+                            >
+                                <ProjectsCard project={project} />
+                            </div>
+                        ))}
+                    </div>
                 </div>
 
                 {/* Right Navigation Button */}
@@ -91,7 +94,7 @@ export default function ProjectsCarousel({ numProjects = 6 }) {
                     aria-label="Scroll right"
                     className="carousel-nav-btn carousel-nav-btn-right"
                 >
-                    →
+                    &gt;&gt;
                 </button>
             </div>
         </section>

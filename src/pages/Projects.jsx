@@ -62,6 +62,9 @@ export default function Projects() {
                     src={ufoImage} 
                     alt="" 
                     className="projects-ufo"
+                    loading="lazy"
+                    decoding="async"
+                    role="presentation"
                 />
                 <h1>Projects</h1>
                 

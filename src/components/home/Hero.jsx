@@ -5,6 +5,13 @@ import catAstronaut from '../../assets/CatAstronaut.svg';
 export default function Hero() {
     const stars = useMemo(() => generateStars(100), []);
 
+    const scrollToProjects = () => {
+        const projectsSection = document.querySelector('.projects-carousel-section');
+        if (projectsSection) {
+            projectsSection.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+
     return (
         <div className="hero">
             <div className="hero-orbs">
@@ -40,8 +47,21 @@ export default function Hero() {
                 ))}
             </div>
             <div className="hero-planet">
-                <img src={catAstronaut} alt="Cat Astronaut" className="hero-cat-astronaut" />
+                <img 
+                    src={catAstronaut} 
+                    alt="Cat Astronaut" 
+                    className="hero-cat-astronaut"
+                    sizes="(max-width: 480px) 150px, (max-width: 768px) 120px, 200px"
+                />
             </div>
+            <button 
+                onClick={scrollToProjects}
+                className="hero-explore-btn"
+                aria-label="Explore projects"
+            >
+                <span className="hero-explore-text">Explore</span>
+                <span className="hero-explore-arrow">↓</span>
+            </button>
         </div>
     )
 }

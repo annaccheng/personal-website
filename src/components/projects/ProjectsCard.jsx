@@ -8,7 +8,13 @@ function ProjectsCard({ project }) {
             <div className="l-accent l-accent-top-left"></div>
             <div className="l-accent l-accent-bottom-right"></div>
             <div className="project-image-container">
-                <img src={photo} alt={title} className="project-image" />
+                <img 
+                    src={photo} 
+                    alt={title} 
+                    className="project-image"
+                    loading="lazy"
+                    decoding="async"
+                />
             </div>
             <div className="card-content">
                 <h3 className="card-title">{title}</h3>
