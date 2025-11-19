@@ -51,7 +51,6 @@ export default function Hero() {
                     src={catAstronaut} 
                     alt="Cat Astronaut" 
                     className="hero-cat-astronaut"
-                    sizes="(max-width: 480px) 150px, (max-width: 768px) 120px, 200px"
                 />
             </div>
             <button 

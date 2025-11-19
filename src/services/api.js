@@ -30,7 +30,9 @@ export async function fetchDistinctCategories() {
     if (error) throw error;
     
     // Extract unique categories and remove null/undefined values
-    const uniqueCategories = [...new Set((data ?? []).flatMap(p => p.category ?? []))].sort();
+    // data is guaranteed to exist after error check, but use ?? for safety
+    if (!data || !Array.isArray(data)) return [];
+    const uniqueCategories = [...new Set(data.flatMap(p => p.category ?? []))].sort();
     return uniqueCategories;
 }
 

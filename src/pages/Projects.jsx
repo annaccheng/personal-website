@@ -25,7 +25,7 @@ export default function Projects() {
                 }
                 setError(null);
                 
-                const data = selectedCategories?.length > 0
+                const data = selectedCategories.length > 0
                     ? await fetchProjectsByCategory(selectedCategories)
                     : await fetchProjects();
                 

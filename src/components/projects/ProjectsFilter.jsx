@@ -23,16 +23,13 @@ export default function ProjectsFilter({ onFilterChange, selectedCategories = []
     }, []);
 
     const handleCategoryToggle = useCallback((category) => {
-        const currentSelection = selectedCategories || [];
-        
-        if (currentSelection.includes(category)) {
+        if (selectedCategories.includes(category)) {
             // Remove category if already selected
-            const updated = currentSelection.filter(cat => cat !== category);
+            const updated = selectedCategories.filter(cat => cat !== category);
             onFilterChange(updated.length > 0 ? updated : null);
         } else {
             // Add category to selection
-            const updated = [...currentSelection, category];
-            onFilterChange(updated);
+            onFilterChange([...selectedCategories, category]);
         }
     }, [selectedCategories, onFilterChange]);
 
@@ -48,8 +45,7 @@ export default function ProjectsFilter({ onFilterChange, selectedCategories = []
         return <div className="error-state">Error: {error}</div>;
     }
 
-    const currentSelection = selectedCategories || [];
-    const hasSelections = currentSelection.length > 0;
+    const hasSelections = selectedCategories.length > 0;
 
     return (
         <div className="projects-filter">
@@ -60,7 +56,7 @@ export default function ProjectsFilter({ onFilterChange, selectedCategories = []
                 All
             </button>
             {categories.map((category) => {
-                const isSelected = currentSelection.includes(category);
+                const isSelected = selectedCategories.includes(category);
                 return (
                     <button
                         key={category}

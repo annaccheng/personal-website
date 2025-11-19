@@ -6,7 +6,6 @@ import profilePhoto from '../assets/ProfilePhoto.png';
 import { ReactTyped } from 'react-typed';
 
 export default function About() {
-
     return (
         <div className="about-page">
             <div className="about-comets">

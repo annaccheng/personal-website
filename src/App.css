@@ -2004,7 +2004,6 @@ img {
 
 /* Ensure all decorative images respect container */
 .hero-cat-astronaut,
-.projects-ufo,
-.about-me-image img {
+.projects-ufo {
   max-width: 100%;
 }
