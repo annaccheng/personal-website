@@ -529,7 +529,7 @@ main h1 {
   position: absolute;
   top: 0;
   left: 50%;
-  transform: translate(-50%, 295%) translateZ(0);
+  transform: translate(-50%, 290%) translateZ(0);
   width: 6vw;
   min-width: 60px;
   max-width: 200px;
@@ -1983,12 +1983,18 @@ main h1 {
     font-size: 1.8rem;
   }
 
-  .hero-cat-astronaut {
-    width: 15vw;
-    min-width: 80px;
-    max-width: 120px;
-    transform: translate(-50%, 260%);
+  .hero-planet {
+    bottom: 110px;
+    transform: translate(-50%, 55%) translateZ(0);
   }
+
+  .hero-cat-astronaut {
+    width: 3vw;
+    min-width: 60px;
+    max-width: 120px;
+    transform: translate(-50%, 180%) translateZ(0);
+  }
+
 }
 
 @media (max-width: 480px) {
@@ -2140,11 +2146,16 @@ main h1 {
     height: 4px;
   }
 
+  .hero-planet {
+    bottom: 110px;
+    transform: translate(-50%, 55%) translateZ(0);
+  }
+
   .hero-cat-astronaut {
-    width: 20vw;
-    min-width: 100px;
+    width: 2vw;
+    min-width: 60px;
     max-width: 150px;
-    transform: translate(-50%, 250%);
+    transform: translate(-50%, 75%);
   }
 }
 
