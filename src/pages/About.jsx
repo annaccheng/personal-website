@@ -8,11 +8,6 @@ import { ReactTyped } from 'react-typed';
 export default function About() {
     return (
         <div className="about-page">
-            <div className="about-comets">
-                <div className="about-comet about-comet--one"></div>
-                <div className="about-comet about-comet--two"></div>
-                <div className="about-comet about-comet--three"></div>
-            </div>
             <div className="about-page-container">
                 <div className="about-me-section">
                     <div className="about-me-text">
