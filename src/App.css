@@ -490,11 +490,12 @@ main h1 {
 }
 
 .hero {
-  padding: 150px 150px 350px 150px;
+  padding: 150px 150px 0px 150px;
   margin: 0;
   left: calc(-50vw + 50%);
   width: 100vw;
   min-height: 112vh;
+  max-height: 90vh;
   position: relative;
   display: flex;
   justify-content: space-between;
@@ -502,6 +503,7 @@ main h1 {
   gap: 60px;
   z-index: 3;
   overflow: hidden;
+  outline: 1px solid blue;
 }
 
 .hero::before {
@@ -514,9 +516,9 @@ main h1 {
 
 .hero-planet {
   position: absolute;
-  bottom: 0;
+  bottom: -70.5vw;
   left: 50%;
-  transform: translate(-50%, 55%) translateZ(0);
+  transform: translate(-50%, 0) translateZ(0);
   width: 135vw;
   height: 135vw;
   background: var(--hero-planet) center / contain no-repeat;
@@ -527,12 +529,10 @@ main h1 {
 
 .hero-cat-astronaut {
   position: absolute;
-  top: 0;
+  top: 19%;  /* Adjust this to position on planet (0% = top, 100% = bottom) */
   left: 50%;
-  transform: translate(-50%, 290%) translateZ(0);
-  width: 6vw;
-  min-width: 60px;
-  max-width: 200px;
+  transform: translate(-50%, 0) translateZ(0);
+  width: 4.4%;  /* Proportional to planet's 135vw */
   height: auto;
   z-index: 1;
   pointer-events: auto;
@@ -542,7 +542,7 @@ main h1 {
 }
 
 .hero-cat-astronaut:hover {
-  transform: translate(-50%, 288%) scale(1.05) translateZ(0);
+  transform: translate(-50%, -7px) scale(1.05) translateZ(0);
   filter: drop-shadow(0 0 10px rgba(113, 250, 255, 0.6));
 }
 
@@ -675,17 +675,19 @@ main h1 {
   content: '';
   position: absolute;
   bottom: 0;
-  left: 0;
-  right: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
   height: 40%;
   background: linear-gradient(to bottom, transparent, var(--bg));
   pointer-events: none;
   z-index: 3;
+  outline: 1px solid red;
 }
 
 .hero-explore-btn {
   position: absolute;
-  bottom: 110px;
+  bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
   background: transparent;
@@ -1946,7 +1948,9 @@ main h1 {
   
   .hero {
     flex-direction: column;
-    padding: 200px 40px 320px 40px;
+    padding: 200px 40px 0px 40px;
+    max-height: 100vh;
+    min-height: 95vh;
     gap: 40px;
     text-align: center;
   }
@@ -1972,6 +1976,7 @@ main h1 {
     width: min(90vw, 520px);
     gap: 12px;
     padding: 16px 18px;
+    pointer-events: auto;
   }
 
   .hero-message-line {
@@ -1984,15 +1989,20 @@ main h1 {
   }
 
   .hero-planet {
-    bottom: 180px;
-    transform: translate(-50%, 55%) translateZ(0);
+    bottom: -67.5vw;
+    transform: translate(-50%, 0) translateZ(0);
   }
 
   .hero-cat-astronaut {
-    width: 3vw;
+    width: 4.4%;  /* Keep proportional */
     min-width: 60px;
     max-width: 120px;
-    transform: translate(-50%, 180%) translateZ(0);
+    top: 16%;  /* Same percentage, will scale with planet */
+    transform: translate(-50%, 0) translateZ(0);
+  }
+
+  .hero-cat-astronaut:hover {
+    transform: translate(-50%, -7px) scale(1.05) translateZ(0);
   }
 
 }
@@ -2109,8 +2119,10 @@ main h1 {
   }
   
   .hero {
-    padding: 150px 20px 250px 20px;
+    padding: 150px 20px 0px 20px;
     gap: 30px;
+    min-height: 85vh;
+    max-height: 100vh;
   }
   
   .hero h1 {
@@ -2129,6 +2141,7 @@ main h1 {
     right: auto;
     left: 50%;
     transform: translateX(-50%);
+    pointer-events: auto;
   }
 
   .hero-message-line::before,
@@ -2147,15 +2160,20 @@ main h1 {
   }
 
   .hero-planet {
-    bottom: 200px;
-    transform: translate(-50%, 55%) translateZ(0);
+    bottom: -67.5vw;
+    transform: translate(-50%, 0) translateZ(0);
   }
 
   .hero-cat-astronaut {
-    width: 2vw;
+    width: 4.4%;  
     min-width: 60px;
     max-width: 150px;
-    transform: translate(-50%, 75%);
+    top: 12%;  
+    transform: translate(-50%, 0) translateZ(0);
+  }
+
+  .hero-cat-astronaut:hover {
+    transform: translate(-50%, -7px) scale(1.05) translateZ(0);
   }
 }
 
