@@ -29,13 +29,14 @@ export default function Header() {
                     <span></span>
                 </span>
             </button>
-            <div className={`header-section header-section--nav ${isMobileMenuOpen ? 'header-section--nav-open' : ''}`}>
+            {/* Desktop navigation - always visible on desktop */}
+            <div className="header-section header-section--nav header-section--desktop">
                 <nav className="header-pill header-pill--nav">
                     <ul>
-                        <li><Link to="/about" className="header-text" onClick={closeMobileMenu}>About</Link></li>
-                        <li><Link to="/projects" className="header-text" onClick={closeMobileMenu}>Projects</Link></li>
+                        <li><Link to="/about" className="header-text">About</Link></li>
+                        <li><Link to="/projects" className="header-text">Projects</Link></li>
                         <li>
-                            <a href="mailto:annacheng@berkeley.edu" className="header-text" onClick={closeMobileMenu}>
+                            <a href="mailto:annacheng@berkeley.edu" className="header-text">
                                 Contact Me
                             </a>
                         </li>
@@ -43,6 +44,23 @@ export default function Header() {
                     </ul>
                 </nav>
             </div>
+            {/* Mobile navigation - only exists when menu is open */}
+            {isMobileMenuOpen && (
+                <div className="header-section header-section--nav header-section--nav-open">
+                    <nav className="header-pill header-pill--nav">
+                        <ul>
+                            <li><Link to="/about" className="header-text" onClick={closeMobileMenu}>About</Link></li>
+                            <li><Link to="/projects" className="header-text" onClick={closeMobileMenu}>Projects</Link></li>
+                            <li>
+                                <a href="mailto:annacheng@berkeley.edu" className="header-text" onClick={closeMobileMenu}>
+                                    Contact Me
+                                </a>
+                            </li>
+                            <li><LightDark /></li>
+                        </ul>
+                    </nav>
+                </div>
+            )}
         </header>
     )
 }

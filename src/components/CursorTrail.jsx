@@ -113,8 +113,15 @@ export default function CursorTrail() {
       };
     };
 
-    // Handle mouse movement
+    // Throttle mouse movement for better performance
+    let throttleTimeout = null;
     const handleMouseMove = (e) => {
+      if (throttleTimeout) return;
+      
+      throttleTimeout = setTimeout(() => {
+        throttleTimeout = null;
+      }, 16); // ~60fps throttle
+      
       const x = e.clientX;
       const y = e.clientY;
       
@@ -123,13 +130,12 @@ export default function CursorTrail() {
       const dy = y - lastMouseRef.current.y;
       const distance = Math.sqrt(dx * dx + dy * dy);
       
-      if (distance > 1) { // Only create particles if moved enough
-        // Create more particles for glitter effect
-        const particleCount = Math.min(Math.floor(distance / 1) + 2, 15);
+      if (distance > 3) { 
+        const particleCount = Math.min(Math.floor(distance / 3) + 1, 8);
 
         for (let i = 0; i < particleCount; i++) {
           // Add slight offset for trail effect
-          const speedFactor = Math.min(distance * 0.5, 40);
+          const speedFactor = Math.min(distance * 0.4, 30);
           const offsetX = (Math.random() - 0.5) * speedFactor;
           const offsetY = (Math.random() - 0.5) * speedFactor;
           particlesRef.current.push(createParticle(x + offsetX, y + offsetY));
@@ -139,9 +145,18 @@ export default function CursorTrail() {
       }
     };
 
-    // Animation loop
+    // Animation loop 
+    let isAnimating = true;
     const animate = () => {
+      if (!isAnimating) return;
+      
       ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      // Skip frame if no particles to improve performance
+      if (particlesRef.current.length === 0) {
+        animationFrameRef.current = requestAnimationFrame(animate);
+        return;
+      }
       
       // Update and draw particles
       for (let i = particlesRef.current.length - 1; i >= 0; i--) {
@@ -176,11 +191,11 @@ export default function CursorTrail() {
           
           ctx.save();
           
-          // Set glow/shadow properties
-          const glowIntensity = particle.size * 6;
+          // Set glow/shadow properties (reduced blur for better performance)
+          const glowIntensity = particle.size * 3;
           if (theme === 'light') {
             ctx.shadowBlur = glowIntensity;
-            ctx.shadowColor = 'rgba(255, 191, 243, 0.9)';
+            ctx.shadowColor = 'rgba(255, 191, 243, 0.7)';
             ctx.strokeStyle = `rgba(255, 191, 243, ${opacity * 0.9})`;
             ctx.fillStyle = `rgba(255, 191, 243, ${opacity * 0.7})`;
           } else {
@@ -230,9 +245,8 @@ export default function CursorTrail() {
         }
       }
       
-      // Limit particle count for performance (increased for glitter effect)
-      if (particlesRef.current.length > 150) {
-        particlesRef.current = particlesRef.current.slice(-100);
+      if (particlesRef.current.length > 80) {
+        particlesRef.current = particlesRef.current.slice(-60);
       }
       
       animationFrameRef.current = requestAnimationFrame(animate);
@@ -246,9 +260,13 @@ export default function CursorTrail() {
     
     // Cleanup
     return () => {
+      isAnimating = false;
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('resize', resizeCanvas);
       themeObserver.disconnect();
+      if (throttleTimeout) {
+        clearTimeout(throttleTimeout);
+      }
       if (animationFrameRef.current) {
         cancelAnimationFrame(animationFrameRef.current);
       }

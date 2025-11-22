@@ -3,7 +3,7 @@ import { generateStars } from '../../utils/stars';
 import catAstronaut from '../../assets/CatAstronaut.svg';
 
 export default function Hero() {
-    const stars = useMemo(() => generateStars(100), []);
+    const stars = useMemo(() => generateStars(60), []);
 
     const scrollToProjects = () => {
         document.querySelector('.projects-carousel-section')?.scrollIntoView({ behavior: 'smooth' });

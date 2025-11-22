@@ -1,9 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, lazy, Suspense } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Routes, Route } from 'react-router-dom';
-import Home from '../pages/Home';
-import Projects from '../pages/Projects';
-import About from '../pages/About';
+
+// Lazy load pages for code splitting and better performance
+const Home = lazy(() => import('../pages/Home'));
+const Projects = lazy(() => import('../pages/Projects'));
+const About = lazy(() => import('../pages/About'));
 
 export default function PageTransition() {
   const location = useLocation();
@@ -28,11 +30,13 @@ export default function PageTransition() {
 
   return (
     <div className={`page-transition page-transition-${transitionStage}`}>
-      <Routes location={displayLocation}>
-        <Route path="/" element={<Home />} />
-        <Route path="/projects" element={<Projects />} />
-        <Route path="/about" element={<About />} />
-      </Routes>
+      <Suspense fallback={<div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>Loading...</div>}>
+        <Routes location={displayLocation}>
+          <Route path="/" element={<Home />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/about" element={<About />} />
+        </Routes>
+      </Suspense>
     </div>
   );
 }

@@ -187,6 +187,7 @@ h1, h2, h3, h4, h5, h6,
   text-decoration: none;
   background: var(--header-bg);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  will-change: transform;
 }
 
 .header-pill:hover {
@@ -238,7 +239,7 @@ h1, h2, h3, h4, h5, h6,
     object-fit: contain;
   }
 
-/* Mobile Menu Toggle Button */
+/* Mobile Menu Toggle Button - Hidden on desktop */
 .mobile-menu-toggle {
   display: none;
   background: var(--header-bg);
@@ -309,6 +310,10 @@ h1, h2, h3, h4, h5, h6,
     display: none;
   }
 
+  .header-section--desktop {
+    display: none;
+  }
+
   .header {
     flex-direction: row;
     justify-content: space-between;
@@ -331,23 +336,19 @@ h1, h2, h3, h4, h5, h6,
     display: none;
   }
 
-  .header-section--nav {
+  /* Mobile nav styles - only apply to mobile nav (not desktop) */
+  .header-section--nav:not(.header-section--desktop) {
     position: fixed;
     top: 75px;
     right: 20px;
     left: auto;
     width: auto;
-    max-height: 0;
-    overflow: visible;
-    transition: max-height 0.3s ease, opacity 0.3s ease;
-    opacity: 0;
     z-index: 10;
     display: flex;
     justify-content: flex-end;
   }
 
   .header-section--nav-open {
-    max-height: 400px;
     opacity: 1;
   }
 
@@ -514,7 +515,7 @@ main h1 {
   position: absolute;
   bottom: -70.5vw;
   left: 50%;
-  transform: translate(-50%, 0) translateZ(0);
+  transform: translate(-50%, 0);
   width: 135vw;
   height: 135vw;
   background: var(--hero-planet) center / contain no-repeat;
@@ -527,7 +528,7 @@ main h1 {
   position: absolute;
   top: 19%;  /* Adjust this to position on planet (0% = top, 100% = bottom) */
   left: 50%;
-  transform: translate(-50%, 0) translateZ(0);
+  transform: translate(-50%, 0);
   width: 4.4%;  /* Proportional to planet's 135vw */
   height: auto;
   z-index: 1;
@@ -538,7 +539,7 @@ main h1 {
 }
 
 .hero-cat-astronaut:hover {
-  transform: translate(-50%, -7px) scale(1.05) translateZ(0);
+  transform: translate(-50%, -7px) scale(1.05);
   filter: drop-shadow(0 0 10px rgba(113, 250, 255, 0.6));
 }
 
@@ -561,7 +562,6 @@ main h1 {
     inset 0 0 40px rgba(113, 250, 255, 0.25);
   animation: orbFloat 20s ease-in-out infinite;
   will-change: transform;
-  transform: translateZ(0);
 }
 
 .hero-orb--one {
@@ -713,6 +713,7 @@ main h1 {
 .hero-explore-arrow {
   font-size: 1.5rem;
   animation: bounce 2s infinite;
+  will-change: transform;
 }
 
 @keyframes bounce {
@@ -922,7 +923,6 @@ main h1 {
   border-radius: 50%;
   animation: twinkle linear infinite;
   will-change: transform, opacity;
-  transform: translateZ(0);
 }
 
 @keyframes twinkle {
@@ -976,6 +976,7 @@ main h1 {
   pointer-events: none;
   z-index: 9999;
   cursor: none; /* Hide default cursor if desired */
+  will-change: contents;
 }
 
 .footer {
@@ -1959,7 +1960,7 @@ main h1 {
 
   .hero-planet {
     bottom: -67.5vw;
-    transform: translate(-50%, 0) translateZ(0);
+    transform: translate(-50%, 0);
   }
 
   .hero-cat-astronaut {
@@ -1967,11 +1968,11 @@ main h1 {
     min-width: 60px;
     max-width: 120px;
     top: 16%;  /* Same percentage, will scale with planet */
-    transform: translate(-50%, 0) translateZ(0);
+    transform: translate(-50%, 0);
   }
 
   .hero-cat-astronaut:hover {
-    transform: translate(-50%, -7px) scale(1.05) translateZ(0);
+    transform: translate(-50%, -7px) scale(1.05);
   }
 
 }
@@ -1982,7 +1983,7 @@ main h1 {
     min-height: 55px;
   }
 
-  .header-section--nav {
+  .header-section--nav:not(.header-section--desktop) {
     top: 70px;
     right: 15px;
   }
@@ -2114,7 +2115,7 @@ main h1 {
 
   .hero-planet {
     bottom: -67.5vw;
-    transform: translate(-50%, 0) translateZ(0);
+    transform: translate(-50%, 0);
   }
 
   .hero-cat-astronaut {
@@ -2122,11 +2123,11 @@ main h1 {
     min-width: 60px;
     max-width: 150px;
     top: 12%;  
-    transform: translate(-50%, 0) translateZ(0);
+    transform: translate(-50%, 0);
   }
 
   .hero-cat-astronaut:hover {
-    transform: translate(-50%, -7px) scale(1.05) translateZ(0);
+    transform: translate(-50%, -7px) scale(1.05);
   }
 }
 
