@@ -516,8 +516,8 @@ main h1 {
   bottom: -70.5vw;
   left: 50%;
   transform: translate(-50%, 0);
-  width: 135vw;
-  height: 135vw;
+  width: min(135vw, 1950px);
+  height: min(135vw, 1950px);
   background: var(--hero-planet) center / contain no-repeat;
   z-index: 1;
   pointer-events: none;
