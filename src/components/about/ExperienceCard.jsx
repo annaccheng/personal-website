@@ -21,7 +21,7 @@ function ExperienceCard({ experience }) {
                     <p className="card-description">{description}</p>
                 )}
             </div>
-            {tags && tags.length > 0 && (
+            {tags?.length > 0 && (
                 <div className="card-tags">
                     {tags.map((tag) => (
                         <span key={tag} className="card-tag">{tag}</span>

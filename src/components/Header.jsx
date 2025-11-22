@@ -6,13 +6,8 @@ import logo from '../assets/Logo.svg';
 export default function Header() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-    const toggleMobileMenu = () => {
-        setIsMobileMenuOpen(!isMobileMenuOpen);
-    };
-
-    const closeMobileMenu = () => {
-        setIsMobileMenuOpen(false);
-    };
+    const toggleMobileMenu = () => setIsMobileMenuOpen(prev => !prev);
+    const closeMobileMenu = () => setIsMobileMenuOpen(false);
 
     return (
         <header className="header">

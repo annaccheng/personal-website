@@ -23,14 +23,10 @@ export default function ProjectsFilter({ onFilterChange, selectedCategories = []
     }, []);
 
     const handleCategoryToggle = useCallback((category) => {
-        if (selectedCategories.includes(category)) {
-            // Remove category if already selected
-            const updated = selectedCategories.filter(cat => cat !== category);
-            onFilterChange(updated.length > 0 ? updated : null);
-        } else {
-            // Add category to selection
-            onFilterChange([...selectedCategories, category]);
-        }
+        const updated = selectedCategories.includes(category)
+            ? selectedCategories.filter(cat => cat !== category)
+            : [...selectedCategories, category];
+        onFilterChange(updated.length > 0 ? updated : null);
     }, [selectedCategories, onFilterChange]);
 
     const handleClearAll = useCallback(() => {

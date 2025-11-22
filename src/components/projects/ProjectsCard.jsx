@@ -27,18 +27,20 @@ function ProjectsCard({ project }) {
                     </div>
                 )}
             </div>
-            {category && Array.isArray(category) && category.length > 0 && (
+            {category?.length > 0 && (
                 <div className="project-category">
                     {category.map((cat) => (
                         <span key={cat} className="project-category-tag">{cat}</span>
                     ))}
                 </div>
             )}
-            <div className="card-tags">
-                {tags && Array.isArray(tags) && tags.map((tag) => (
-                    <span key={tag} className="card-tag">{tag}</span>
-                ))}
-            </div>
+            {tags?.length > 0 && (
+                <div className="card-tags">
+                    {tags.map((tag) => (
+                        <span key={tag} className="card-tag">{tag}</span>
+                    ))}
+                </div>
+            )}
         </div>
     )
 }

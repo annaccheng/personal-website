@@ -6,10 +6,7 @@ export default function Hero() {
     const stars = useMemo(() => generateStars(100), []);
 
     const scrollToProjects = () => {
-        const projectsSection = document.querySelector('.projects-carousel-section');
-        if (projectsSection) {
-            projectsSection.scrollIntoView({ behavior: 'smooth' });
-        }
+        document.querySelector('.projects-carousel-section')?.scrollIntoView({ behavior: 'smooth' });
     };
 
     return (
@@ -20,13 +17,13 @@ export default function Hero() {
                 <span className="hero-orb hero-orb--three"></span>
             </div>
             <div className="hero-message">
-                <div className="hero-message-line hero-message-line--top">
+                <div className="hero-message-line">
                     <span>INCOMING MESSAGE</span>
                 </div>
                 <div className="hero-message-main">
                     <span>Welcome to Anna&apos;s Website!</span>
                 </div>
-                <div className="hero-message-line hero-message-line--bottom">
+                <div className="hero-message-line">
                     <span>INCOMING MESSAGE</span>
                 </div>
             </div>

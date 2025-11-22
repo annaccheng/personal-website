@@ -43,7 +43,7 @@ export default function Projects() {
     }, [selectedCategories]);
 
     const handleFilterChange = useCallback((categories) => {
-        setSelectedCategories(categories || []);
+        setSelectedCategories(categories ?? []);
     }, []);
 
     // Show full loading state only on initial load
@@ -83,7 +83,7 @@ export default function Projects() {
                     )}
                 </div>
                 
-                {projects.length === 0 && !isFiltering && (
+                {!projects.length && !isFiltering && (
                     <p>No projects found in this category.</p>
                 )}
             </div>

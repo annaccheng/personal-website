@@ -25,25 +25,10 @@ export default function ProjectsCarousel({ numProjects = 6 }) {
         loadProjects();
     }, [numProjects]);
 
-    // Scroll functions - memoized to prevent recreation on every render
-    const scrollLeft = useCallback(() => {
-        if (scrollContainerRef.current) {
-            const scrollAmount = scrollContainerRef.current.clientWidth;
-            scrollContainerRef.current.scrollBy({
-                left: -scrollAmount,
-                behavior: 'smooth'
-            });
-        }
-    }, []);
-
-    const scrollRight = useCallback(() => {
-        if (scrollContainerRef.current) {
-            const scrollAmount = scrollContainerRef.current.clientWidth;
-            scrollContainerRef.current.scrollBy({
-                left: scrollAmount,
-                behavior: 'smooth'
-            });
-        }
+    const scroll = useCallback((direction) => {
+        if (!scrollContainerRef.current) return;
+        const scrollAmount = scrollContainerRef.current.clientWidth * direction;
+        scrollContainerRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
     }, []);
 
     if (loading) {
@@ -54,7 +39,7 @@ export default function ProjectsCarousel({ numProjects = 6 }) {
         return <div className="error-state">Error: {error}</div>;
     }
 
-    if (!projects || projects.length === 0) {
+    if (!projects?.length) {
         return <div className="empty-state">No projects to display</div>;
     }
 
@@ -64,7 +49,7 @@ export default function ProjectsCarousel({ numProjects = 6 }) {
             <div className="projects-carousel-container">
                 {/* Left Navigation Button */}
                 <button 
-                    onClick={scrollLeft}
+                    onClick={() => scroll(-1)}
                     aria-label="Scroll left"
                     className="carousel-nav-btn carousel-nav-btn-left"
                 >
@@ -90,7 +75,7 @@ export default function ProjectsCarousel({ numProjects = 6 }) {
 
                 {/* Right Navigation Button */}
                 <button
-                    onClick={scrollRight}
+                    onClick={() => scroll(1)}
                     aria-label="Scroll right"
                     className="carousel-nav-btn carousel-nav-btn-right"
                 >
