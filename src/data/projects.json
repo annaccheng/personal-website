@@ -1,0 +1,68 @@
+[
+    {
+        "id": 2,
+        "project_date": "2025-04-20",
+        "title": "Athena",
+        "description": "Interactive coversational platform that scrapes educational content from a variety of educational resources to create personalized learning plans and meet users at their level",
+        "photo": "",
+        "tags": ["React", "Python", "APIs", "AI"],
+        "link": "",
+        "visibility_score": 88,
+        "category": ["Engineering"]
+    },
+    {
+        "id": 4,
+        "project_date": "2024-07-01",
+        "title": "Spotify Social Features Redesign",
+        "description": "As a power user for Spotify, I was inspired to reinagine the in-app social experience for a capstone project. ",
+        "photo": "https://www.hollywoodreporter.com/wp-content/uploads/2024/06/GettyImages-2156022146.jpg?crop=0px%2C645px%2C6000px%2C3357px&resize=2000%2C1126",
+        "tags": ["UX Design", "Case Study", "Figma"],
+        "link": "https://www.figma.com/design/MOPVnDaW228klKNHRbH558/Spotfiy-Mockup?node-id=0-1&t=WVNY2Onv1ZFxyDfd-1",
+        "visibility_score": 80,
+        "category": ["Product Design"]
+    },
+    {
+        "id": 5,
+        "project_date": "2024-02-05",
+        "title": "Automated Financial Reporting Dashboard",
+        "description": "Created an automated financial reporting system utilizing Airtable to support Masterclass' financial reporting and budgeting",
+        "photo": "https://i.insider.com/68adfd11194a2d49b8af3642?width=700",
+        "tags": ["Product Management", "UI Design", "Prototyping"],
+        "link": "",
+        "visibility_score": 75,
+        "category": ["PM", "Engineering"]
+    },
+    {
+        "id": 6,
+        "project_date": "2025-11-13",
+        "title": "Tesla Expansion Strategy",
+        "description": "Researched various customer segments and conducted in-depth analysis on customer datasets to pinpoint the top regions of expansion for Tesla. ",
+        "photo": "https://www.investopedia.com/thmb/2A_kOqzofUTtxsoKPz-mQlrb_V0=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/INV_TeslaDealership_GettyImages-1494887228-d84da0e690bd42fea0ebf3a667fc85bc.jpg",
+        "tags": ["User Research", "Product Strategy", "SQL"],
+        "link": "",
+        "visibility_score": 60,
+        "category": ["Consulting"]
+    },
+    {
+        "id": 7,
+        "project_date": "2025-11-13",
+        "title": "Capital One Landing Page Experience Redesign",
+        "description": "Redesigned an interactive experience for credit card landing pages. Created A/B tests backed by historical data, with projected $8M+ lifts in value.",
+        "photo": "https://www.investopedia.com/thmb/ZkoxGftI-UoZbWsk3xuZ0Ux6bQ0=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-1998623648-d3850511f0334273b0108e7964f79dcd.jpg",
+        "tags": ["SQL", "Product Strategy"],
+        "link": "",
+        "visibility_score": 85,
+        "category": ["PM"]
+    },
+    {
+        "id": 8,
+        "project_date": "2025-11-18",
+        "title": "RAG Analytics Dashboard",
+        "description": "Led engineering and design teams at Salesforce to launch the first iteration of an agentic RAG analytics dashboard, and scoped out future product requirements to move to Tableau",
+        "photo": "https://techcrunch.com/wp-content/uploads/2022/11/Salesforce_logo-e1672835031758.jpg",
+        "tags": ["Agentic Systems", "Data Tracing", "Figma"],
+        "link": "",
+        "visibility_score": 88,
+        "category": ["PM"]
+    }
+]

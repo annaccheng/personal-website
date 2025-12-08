@@ -1,46 +1,32 @@
-import { supabase } from '../config/supabase';
+import projectsData from '../data/projects.json';
 
 export async function fetchProjects() {
-    const { data, error } = await supabase
-        .from('projects')
-        .select('*');
-    
-    if (error) throw error;
-    return data;
+    // Simulate async behavior to match previous API pattern
+    return Promise.resolve(projectsData);
 }
 
 // get the top x projects with the highest visibility_score
 export async function fetchTopProjects(x) {
-    const { data, error } = await supabase
-        .from('projects')
-        .select('*')
-        .order('visibility_score', { ascending: false })
-        .limit(x);
-
-    if (error) throw error;
-    return data;
+    const sorted = [...projectsData]
+        .sort((a, b) => (b.visibility_score || 0) - (a.visibility_score || 0))
+        .slice(0, x);
+    
+    return Promise.resolve(sorted);
 }
 
 // get all possible categories to filter by
 export async function fetchDistinctCategories() {
-    const { data, error } = await supabase
-        .from('projects')
-        .select('category');
-    
-    if (error) throw error;
-    
-    if (!data?.length) return [];
-    const uniqueCategories = [...new Set(data.flatMap(p => p.category ?? []))].sort();
-    return uniqueCategories;
+    const uniqueCategories = [...new Set(projectsData.flatMap(p => p.category ?? []))].sort();
+    return Promise.resolve(uniqueCategories);
 }
 
 // Fetch projects filtered by category
 export async function fetchProjectsByCategory(category) {
-    const { data, error } = await supabase
-        .from('projects')
-        .select('*')
-        .overlaps('category', Array.isArray(category) ? category : [category]);
+    const categories = Array.isArray(category) ? category : [category];
+    const filtered = projectsData.filter(project => {
+        const projectCategories = project.category ?? [];
+        return categories.some(cat => projectCategories.includes(cat));
+    });
     
-    if (error) throw error;
-    return data;
+    return Promise.resolve(filtered);
 }
