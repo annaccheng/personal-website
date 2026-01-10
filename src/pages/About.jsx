@@ -1,61 +1,82 @@
-import ExperienceCard from '../components/about/ExperienceCard';
-import EducationCard from '../components/about/EducationCard';
 import experienceData from '../data/experience.json';
 import educationData from '../data/education.json';
 import profilePhoto from '../assets/ProfilePhoto.png';
-import { ReactTyped } from 'react-typed';
 
 export default function About() {
     return (
-        <div className="about-page">
-            <div className="about-page-container">
-                <div className="about-me-section">
-                    <div className="about-me-text">
-                        <h1>
-                            <ReactTyped
-                                strings={['Hi! I\'m Anna 🚀']}
-                                typeSpeed={80}
-                                backSpeed={0}
-                                showCursor
-                                cursorChar="|"
-                                loop={false}
-                            />
-                        </h1>
-                        <p className="about-intro">
-                            I'm a rising senior at UC Berkeley studying Computer Science and Business. I started my journey in product management 
-                            in business strategy and consulting, but quickly fell in love with the technical side of coding and ML. 
-                            I'm passionate about Human Computer Interaction, building scrappy products, and creating software with meaningful impact.
-                            I love solving difficult problems, both in product and in life. I'm a big fan of puzzles (NYT mini, crossword, sudoku, you name it). 
-                            In my free time I also enjoy art, fashion design, film photography, and hiking!
-                        </p>
-                    </div>
-                    <div className="about-me-image">
-                        <img 
-                            src={profilePhoto} 
-                            alt="Anna" 
-                            loading="lazy"
-                            decoding="async"
-                        />
-                    </div>
+        <main className="about-page">
+            <section className="about-hero">
+                <div className="about-content">
+                    <h1>About Me</h1>
+                    <p className="about-bio">
+                        I'm a rising senior at UC Berkeley studying Computer Science and Business. 
+                        I started my journey in product management through consulting, 
+                        working with several tech companies on GTM and product strategy. I started playing 
+                        around with coding and ML, and quickly fell in love with the technical side of building.
+                    </p>
+                    <p className="about-bio">
+                        I'm passionate about Human Computer Interaction, building scrappy products, 
+                        and creating software with meaningful impact. I love solving difficult problems, 
+                        both in product and in life.
+                    </p>
+                    <p className="about-bio">
+                        In my free time, I enjoy art, fashion design, film photography, and hiking!
+                        I'm also a big fan of puzzles (NYT mini, crossword, sudoku, mahjong, you name it).
+                    </p>
                 </div>
-                
-                <h1>Professional Experience</h1>
-                <div className="experience-section">
+                <div className="about-photo">
+                    <img src={profilePhoto} alt="Anna Cheng" />
+                </div>
+            </section>
+
+            <section className="experience-section">
+                <h2 className="section-title">Experience</h2>
+                <div className="experience-list">
                     {experienceData.map((exp) => (
-                        <div key={exp.id} className="experience-row">
-                            <div className="timeline-node"></div>
-                            <ExperienceCard experience={exp} />
+                        <div key={exp.id} className="experience-item">
+                            <div className="experience-header">
+                                <div className="experience-role">
+                                    <h3>{exp.title}</h3>
+                                    <span className="experience-company">{exp.company}</span>
+                                </div>
+                                <span className="experience-date">
+                                    {exp.startDate} – {exp.endDate}
+                                </span>
+                            </div>
+                            <p className="experience-description">{exp.description}</p>
+                            {exp.tags?.length > 0 && (
+                                <div className="experience-tags">
+                                    {exp.tags.map((tag) => (
+                                        <span key={tag} className="tag">{tag}</span>
+                                    ))}
+                                </div>
+                            )}
                         </div>
                     ))}
                 </div>
-                
-                <h1>Education</h1>
-                <div className="education-grid">
+            </section>
+
+            <section className="education-section">
+                <h2 className="section-title">Education</h2>
+                <div className="education-list">
                     {educationData.map((edu) => (
-                        <EducationCard key={edu.id} education={edu} />
+                        <div key={edu.id} className="education-item">
+                            <div className="education-header">
+                                <div className="education-degree">
+                                    <h3>{edu.degree}</h3>
+                                    <span className="education-school">{edu.school}</span>
+                                </div>
+                                <span className="education-date">
+                                    {edu.startDate} – {edu.endDate}
+                                </span>
+                            </div>
+                            {edu.gpa && (
+                                <p className="education-gpa">GPA: {edu.gpa}</p>
+                            )}
+                        </div>
                     ))}
                 </div>
-            </div>
-        </div>
+            </section>
+        </main>
     );
 }

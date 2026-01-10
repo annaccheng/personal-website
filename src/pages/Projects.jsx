@@ -1,92 +1,63 @@
-import ProjectsCard from '../components/projects/ProjectsCard';
-import ProjectsFilter from '../components/projects/ProjectsFilter';
-import { fetchProjects, fetchProjectsByCategory } from '../services/api';
-import { useState, useEffect, useRef, useCallback } from 'react';
-import ufoImage from '../assets/projectPage/Ufo.svg';
+import projectsData from '../data/projects.json';
 
 export default function Projects() {
-    const [projects, setProjects] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [isFiltering, setIsFiltering] = useState(false);
-    const [error, setError] = useState(null);
-    const [selectedCategories, setSelectedCategories] = useState([]);
-    const isInitialLoadRef = useRef(true);
-
-    useEffect(() => {
-        async function loadProjects() {
-            try {
-                // Only show full loading state on initial load
-                if (isInitialLoadRef.current) {
-                    setLoading(true);
-                    isInitialLoadRef.current = false;
-                } else {
-                    // For filter changes, use a lighter loading state
-                    setIsFiltering(true);
-                }
-                setError(null);
-                
-                const data = selectedCategories.length > 0
-                    ? await fetchProjectsByCategory(selectedCategories)
-                    : await fetchProjects();
-                
-                setProjects(data);
-            } catch (err) {
-                setError('Failed to load projects');
-                console.error(err);
-            } finally {
-                setLoading(false);
-                setIsFiltering(false);
-            }
-        }
-
-        loadProjects();
-    }, [selectedCategories]);
-
-    const handleFilterChange = useCallback((categories) => {
-        setSelectedCategories(categories ?? []);
-    }, []);
-
-    // Show full loading state only on initial load
-    if (loading && projects.length === 0) {
-        return <div className="loading-state">Loading projects...</div>;
-    }
-
-    if (error) {
-        return <div className="error-state">Error: {error}</div>;
-    }
+    // Sort projects by date (newest first)
+    const sortedProjects = [...projectsData].sort((a, b) => 
+        new Date(b.project_date) - new Date(a.project_date)
+    );
 
     return (
-        <div className="projects-page">
-            <div className="projects-page-container">
-                <img 
-                    src={ufoImage} 
-                    alt="" 
-                    className="projects-ufo"
-                    loading="lazy"
-                    decoding="async"
-                    role="presentation"
-                />
-                <h1>Projects</h1>
-                
-                <ProjectsFilter 
-                    onFilterChange={handleFilterChange}
-                    selectedCategories={selectedCategories}
-                />
-                
-                <div className={`projects-grid ${isFiltering ? 'filtering' : ''}`}>
-                    {projects.map((project) => (
-                        <ProjectsCard key={project.id} project={project} />
-                    ))}
-                    {isFiltering && (
-                        <div className="filter-loading-overlay">
+        <main className="projects-page">
+            <h1>Projects</h1>
+            <p className="projects-intro">
+                A collection of products, designs, and research I've worked on.
+            </p>
+            
+            <div className="projects-list">
+                {sortedProjects.map((project) => (
+                    <article key={project.id} className="project-item">
+                        {project.photo && (
+                            <div className="project-image">
+                                <img 
+                                    src={project.photo} 
+                                    alt={project.title}
+                                    loading="lazy"
+                                />
+                            </div>
+                        )}
+                        <div className="project-content">
+                            <div className="project-header">
+                                <h2>{project.title}</h2>
+                                {project.category?.length > 0 && (
+                                    <div className="project-categories">
+                                        {project.category.map((cat) => (
+                                            <span key={cat} className="category">{cat}</span>
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
+                            <p className="project-description">{project.description}</p>
+                            {project.tags?.length > 0 && (
+                                <div className="project-tags">
+                                    {project.tags.map((tag) => (
+                                        <span key={tag} className="tag">{tag}</span>
+                                    ))}
+                                </div>
+                            )}
+                            {project.link && (
+                                <a 
+                                    href={project.link} 
+                                    target="_blank" 
+                                    rel="noopener noreferrer"
+                                    className="project-link"
+                                >
+                                    View Project →
+                                </a>
+                            )}
                         </div>
-                    )}
-                </div>
-                
-                {!projects.length && !isFiltering && (
-                    <p>No projects found in this category.</p>
-                )}
+                    </article>
+                ))}
             </div>
-        </div>
+        </main>
     );
 }

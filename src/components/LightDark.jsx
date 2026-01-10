@@ -16,13 +16,10 @@ export default function LightDark() {
     return (
         <button 
             onClick={toggleTheme} 
-            aria-label="Toggle theme"
+            aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
             className="theme-toggle"
-            data-theme={theme}
         >
-            <span className="theme-toggle-slider">
-                {theme === 'light' ? '☀️' : '🌙'}
-            </span>
+            {theme === 'light' ? 'Dark' : 'Light'}
         </button>
     );
 }

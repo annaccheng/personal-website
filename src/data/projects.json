@@ -11,6 +11,16 @@
         "category": ["Engineering"]
     },
     {
+        "id": 3,
+        "project_date": "2025-07-30",
+        "title": "Internal Enablement Resource Agent",
+        "description": "Built an agentic system that scraped internal documentation and supported FDEs in answering questions about Agentforce integration issues",
+        "tags": ["React", "Python", "APIs", "AI"],
+        "link": "",
+        "visibility_score": 88,
+        "category": ["Engineering"]
+    },
+    {
         "id": 4,
         "project_date": "2024-07-01",
         "title": "Spotify Social Features Redesign",

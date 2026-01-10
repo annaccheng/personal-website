@@ -1,70 +1,122 @@
-# Getting Started with Create React App
+# Anna Cheng - Personal Website
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A minimalistic personal website built with React, featuring a clean design inspired by modern developer portfolios.
 
-## Available Scripts
+## Pages
 
-In the project directory, you can run:
+- **Home** - Quick intro and brief timeline of recent experiences
+- **About** - Detailed bio, photos, full experience history, and education
+- **Projects** - Portfolio of products, designs, and research
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Clean, minimalistic design with focus on content
+- Light/Dark theme toggle with system preference detection
+- Responsive design for all screen sizes
+- Fast page loads with lazy loading
+- Simple, accessible navigation
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Tech Stack
 
-### `npm test`
+- React 18
+- React Router for navigation
+- CSS Variables for theming
+- No external UI libraries - lightweight and fast
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Getting Started
 
-### `npm run build`
+### Prerequisites
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Node.js (v16 or higher)
+- npm or yarn
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Installation
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+npm install
+```
 
-### `npm run eject`
+### Development
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```bash
+npm start
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Opens the app in development mode at [http://localhost:3000](http://localhost:3000).
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Production Build
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```bash
+npm run build
+```
 
-## Learn More
+Builds the app for production to the `build` folder.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Project Structure
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+src/
+├── components/
+│   ├── Header.jsx      # Navigation header
+│   ├── Footer.jsx      # Site footer
+│   ├── LightDark.jsx   # Theme toggle
+│   └── PageTransition.jsx  # Route handling
+├── pages/
+│   ├── Home.jsx        # Home page with intro and timeline
+│   ├── About.jsx       # About page with bio and experience
+│   └── Projects.jsx    # Projects portfolio
+├── data/
+│   ├── experience.json # Work experience data
+│   ├── education.json  # Education data
+│   └── projects.json   # Projects data
+├── assets/             # Images and icons
+├── App.jsx             # Main app component
+├── App.css             # All styles
+└── index.js            # Entry point
+```
 
-### Code Splitting
+## Customization
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Adding Experience
 
-### Analyzing the Bundle Size
+Edit `src/data/experience.json`:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```json
+{
+  "id": 1,
+  "title": "Job Title",
+  "company": "Company Name",
+  "location": "City, State",
+  "description": "Description of role...",
+  "tags": ["Skill1", "Skill2"],
+  "startDate": "Month Year",
+  "endDate": "Month Year"
+}
+```
 
-### Making a Progressive Web App
+### Adding Projects
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Edit `src/data/projects.json`:
 
-### Advanced Configuration
+```json
+{
+  "id": 1,
+  "project_date": "YYYY-MM-DD",
+  "title": "Project Title",
+  "description": "Project description...",
+  "photo": "URL to image",
+  "tags": ["Tech1", "Tech2"],
+  "link": "URL to project",
+  "category": ["Category"]
+}
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Theming
 
-### Deployment
+Colors are defined as CSS variables in `src/App.css`. Modify the `:root[data-theme="light"]` and `:root[data-theme="dark"]` sections to customize colors.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Contact
 
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Email: annacheng@berkeley.edu
+- LinkedIn: [annaccheng](https://www.linkedin.com/in/annaccheng/)
+- GitHub: [annaccheng](https://github.com/annaccheng)
