@@ -4,7 +4,7 @@
       "title": "Associate Product Manager Intern",
       "company": "Salesforce",
       "location": "San Francisco, CA",
-      "description": "Built an end-to-end customer feedback pipeline reducing cycle time by 40% and influence roadmap priorities. Identified customer gaps, and designed RAG analytics dashboard, and led multi-language agent evaluations spanning 30+ languages and $300M in business value.",
+      "description": "Built an end-to-end customer feedback pipeline reducing cycle time by 40% and protyped an internal agentic-powered enablement platform. Designed and launched agentic RAG analytics dashboard and led multi-language agent evaluations spanning 30+ languages and $300M in business value.",
       "tags": ["AI", "Agentic Workflows", "Product Management", "Data Analysis"],
       "startDate": "May 2025", 
       "endDate": "August 2025"
@@ -23,7 +23,7 @@
 
     {
       "id": 3,
-      "title": "Consultant (Contract)",
+      "title": "Contract Consultant",
       "company": "Tesla",
       "location": "Fremont, CA",
       "description": "Analyzed 150+ market reports to identify competitive opportunities and shape GTM and product strategy. Built campaign mockups, defined key performance metrics, and gathered customer insights through interviews and market research.",
@@ -34,7 +34,7 @@
     
     {
       "id": 4,
-      "title": "Product Manager (Contract)",
+      "title": "Contract Product Manager",
       "company": "MasterClass",
       "location": "San Francisco, CA",
       "description": "Developed an automated financial modeling database with Python/JavaScript, improving data efficiency by 20%. Developed machine learning tools to track key metrics and forecasting models that improved budget accuracy.",
@@ -45,7 +45,7 @@
 
     {
       "id": 5,
-      "title": "Product Manager (Contract)",
+      "title": "Contract Product Manager",
       "company": "Verizon Cloud",
       "location": "San Francisco, CA",
       "description": "Created a 6-month product roadmap with integrated data pipelines and Figma prototypes for engagement tracking. Led UX ideation and “Power User” definition through interviews with 8K+ users, providing insights for retention efforts.",

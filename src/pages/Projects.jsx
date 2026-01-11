@@ -28,13 +28,6 @@ export default function Projects() {
                         <div className="project-content">
                             <div className="project-header">
                                 <h2>{project.title}</h2>
-                                {project.category?.length > 0 && (
-                                    <div className="project-categories">
-                                        {project.category.map((cat) => (
-                                            <span key={cat} className="category">{cat}</span>
-                                        ))}
-                                    </div>
-                                )}
                             </div>
                             <p className="project-description">{project.description}</p>
                             {project.tags?.length > 0 && (

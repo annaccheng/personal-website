@@ -1,6 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import LightDark from './LightDark';
+import logo from '../assets/Logo.png';
 
 export default function Header() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -14,7 +15,7 @@ export default function Header() {
     return (
         <header className="header">
             <Link to="/" className="header-logo" onClick={closeMobileMenu}>
-                anna cheng
+                <img src={logo} alt="Anna Cheng" className="header-logo-img" />
             </Link>
             
             <button 

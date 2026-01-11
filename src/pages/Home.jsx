@@ -10,16 +10,8 @@ export default function Home() {
             <section className="intro-section">
                 <h1 className="intro-greeting">hi! i'm anna.</h1>
                 <p className="intro-text">
-                    I'm an aspiring product manager and software engineer studying computer science and business at UC Berkeley.
-                    A bit more about me:
+                    CS and Business @ UC Berkeley | Prev. Product @ Salesforce, Capital One, MasterClass
                 </p>
-                <ul className="intro-highlights">
-                    <li>Built and prototyped products from 0-1 at Salesforce, Capital One, and MasterClass</li>
-                    <li>Worked across GTM, product, design, and engineering teams to shape new products</li>
-                    <li>Passionate about HCI, scrappy products, and strategic GTM</li>
-                    <li>Love playing around with new tools and building meaningful software (see some of my current endeavors below!)</li>
-                    <li>Love puzzles, art, hiking, and fashion design</li>
-                </ul>
             </section>
 
             <section className="timeline-section">
