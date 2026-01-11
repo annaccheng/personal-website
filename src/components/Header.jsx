@@ -32,27 +32,29 @@ export default function Header() {
             </button>
 
             <nav className={`header-nav ${isMobileMenuOpen ? 'header-nav--open' : ''}`}>
-                <Link 
-                    to="/about" 
-                    className={isActive('/about') ? 'active' : ''}
-                    onClick={closeMobileMenu}
-                >
-                    About
-                </Link>
-                <Link 
-                    to="/projects" 
-                    className={isActive('/projects') ? 'active' : ''}
-                    onClick={closeMobileMenu}
-                >
-                    Projects
-                </Link>
-                <a 
-                    href="mailto:annacheng@berkeley.edu"
-                    onClick={closeMobileMenu}
-                >
-                    Contact
-                </a>
-                <LightDark />
+                <div className="nav-pill">
+                    <Link 
+                        to="/about" 
+                        className={isActive('/about') ? 'active' : ''}
+                        onClick={closeMobileMenu}
+                    >
+                        About
+                    </Link>
+                    <Link 
+                        to="/projects" 
+                        className={isActive('/projects') ? 'active' : ''}
+                        onClick={closeMobileMenu}
+                    >
+                        Projects
+                    </Link>
+                    <a 
+                        href="mailto:annacheng@berkeley.edu"
+                        onClick={closeMobileMenu}
+                    >
+                        Contact
+                    </a>
+                    <LightDark />
+                </div>
             </nav>
         </header>
     );

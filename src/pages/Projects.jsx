@@ -8,14 +8,19 @@ export default function Projects() {
 
     return (
         <main className="projects-page">
-            <h1>Projects</h1>
-            <p className="projects-intro">
-                A collection of products, designs, and research I've worked on.
-            </p>
+            <div className="animate-in stagger-1">
+                <h1>Projects</h1>
+                <p className="projects-intro">
+                    A collection of products, designs, and research I've worked on.
+                </p>
+            </div>
             
             <div className="projects-list">
-                {sortedProjects.map((project) => (
-                    <article key={project.id} className="project-item">
+                {sortedProjects.map((project, index) => (
+                    <article 
+                        key={project.id} 
+                        className={`project-item animate-in stagger-${Math.min(index + 2, 8)}`}
+                    >
                         {project.photo && (
                             <div className="project-image">
                                 <img 

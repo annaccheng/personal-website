@@ -15,6 +15,9 @@
   --tag-text: #4b5563;
   --title-gradient: linear-gradient(to right, #3a5a40, #a3b18a, #dad7cd);
   --title2-color: #3a5a40;
+  --pill-bg: rgba(255, 255, 255, 0.6);
+  --pill-hover: rgba(0, 0, 0, 0.05);
+  --pill-active: rgba(255, 255, 255, 0.9);
 }
 
 :root[data-theme="dark"] {
@@ -31,6 +34,9 @@
   --tag-text: #a1a1a1;
   --title-gradient: linear-gradient(to right, #5c7650, #a3b18a, #dad7cd);
   --title2-color: #5c7650;
+  --pill-bg: rgba(0, 0, 0, 0.3);
+  --pill-hover: rgba(255, 255, 255, 0.08);
+  --pill-active: rgba(255, 255, 255, 0.12);
 }
 
 /* =========================================
@@ -72,7 +78,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.5rem 2rem;
+  padding: 1rem 2rem;
   background-color: var(--bg);
   border-bottom: 1px solid var(--border);
   max-width: 1200px;
@@ -99,19 +105,43 @@ body {
 .header-nav {
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 1rem;
 }
 
-.header-nav a {
-  font-size: 0.9rem;
+.nav-pill {
+  display: flex;
+  align-items: center;
+  background-color: var(--pill-bg);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.5rem;
+  gap: 0.25rem;
+}
+
+.nav-pill a {
+  font-size: 0.98rem;
   color: var(--text-secondary);
   text-decoration: none;
-  transition: color 0.2s ease;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  transition: all 0.2s ease;
 }
 
-.header-nav a:hover,
-.header-nav a.active {
+.nav-pill a:hover {
   color: var(--text);
+  background-color: var(--pill-hover);
+}
+
+.nav-pill a.active {
+  color: var(--text);
+  background-color: var(--pill-active);
+}
+
+.nav-pill .theme-toggle {
+  margin-left: 0.25rem;
+  border-left: 1px solid var(--border);
+  border-radius: 0 999px 999px 0;
+  padding: 0.5rem 0.75rem;
 }
 
 .mobile-menu-toggle {
@@ -153,19 +183,26 @@ body {
    Theme Toggle
    ========================================= */
 .theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: none;
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  padding: 0.4rem 0.8rem;
-  font-size: 0.8rem;
+  border: none;
+  border-radius: 999px;
+  padding: 0.5rem;
   color: var(--text-secondary);
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .theme-toggle:hover {
-  border-color: var(--text-secondary);
   color: var(--text);
+  background-color: var(--pill-hover);
+}
+
+.theme-toggle svg {
+  width: 18px;
+  height: 18px;
 }
 
 /* =========================================
@@ -178,6 +215,34 @@ main {
   padding: 3rem 1.5rem;
   width: 100%;
 }
+
+/* =========================================
+   Page Transitions & Animations
+   ========================================= */
+@keyframes slideUpFade {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-in {
+  animation: slideUpFade 0.5s ease-out forwards;
+  opacity: 0;
+}
+
+.stagger-1 { animation-delay: 0ms; }
+.stagger-2 { animation-delay: 100ms; }
+.stagger-3 { animation-delay: 200ms; }
+.stagger-4 { animation-delay: 300ms; }
+.stagger-5 { animation-delay: 400ms; }
+.stagger-6 { animation-delay: 500ms; }
+.stagger-7 { animation-delay: 600ms; }
+.stagger-8 { animation-delay: 700ms; }
 
 /* =========================================
    Loading State
@@ -826,10 +891,10 @@ main {
   }
 
   .header-nav {
-  position: absolute;
+    position: absolute;
     top: 100%;
-  left: 0;
-  right: 0;
+    left: 0;
+    right: 0;
     flex-direction: column;
     background-color: var(--bg);
     border-bottom: 1px solid var(--border);
@@ -840,6 +905,28 @@ main {
 
   .header-nav--open {
     display: flex;
+  }
+
+  .nav-pill {
+    flex-direction: column;
+    width: 100%;
+    border-radius: 12px;
+  }
+
+  .nav-pill a {
+    width: 100%;
+    text-align: center;
+    border-radius: 8px;
+  }
+
+  .nav-pill .theme-toggle {
+    margin-left: 0;
+    margin-top: 0.25rem;
+    border-left: none;
+    border-top: 1px solid var(--border);
+    border-radius: 0 0 8px 8px;
+    width: 100%;
+    padding: 0.75rem;
   }
   
   main {

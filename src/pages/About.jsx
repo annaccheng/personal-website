@@ -16,7 +16,7 @@ export default function About() {
     return (
         <main className="about-page">
             <section className="about-hero">
-                <div className="about-content">
+                <div className="about-content animate-in stagger-1">
                     <h1>About Me</h1>
                     <p className="about-bio">
                         I'm a rising senior at UC Berkeley studying Computer Science and Business. 
@@ -37,7 +37,7 @@ export default function About() {
                         <li>Solving anagrams and puzzles (NYT mini, crossword, sudoku, mahjong, you name it)</li>
                     </ul>
                 </div>
-                <div className="about-polaroids">
+                <div className="about-polaroids animate-in stagger-2">
                     {polaroids.map((photo, index) => (
                         <div 
                             key={index} 
@@ -53,11 +53,14 @@ export default function About() {
                 </div>
             </section>
 
-            <section className="experience-section">
+            <section className="experience-section animate-in stagger-3">
                 <h2 className="section-title">Experience</h2>
                 <div className="experience-list">
-                    {experienceData.map((exp) => (
-                        <div key={exp.id} className="experience-item">
+                    {experienceData.map((exp, index) => (
+                        <div 
+                            key={exp.id} 
+                            className={`experience-item animate-in stagger-${Math.min(index + 4, 8)}`}
+                        >
                             <div className="experience-header">
                                 <div className="experience-role">
                                     <h3>{exp.title}</h3>
@@ -80,7 +83,7 @@ export default function About() {
                 </div>
             </section>
 
-            <section className="education-section">
+            <section className="education-section animate-in stagger-4">
                 <h2 className="section-title">Education</h2>
                 <div className="education-list">
                     {educationData.map((edu) => (
