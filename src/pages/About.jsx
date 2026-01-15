@@ -4,6 +4,7 @@ import artPhoto from '../assets/About/art.jpg';
 import friendsPhoto from '../assets/About/friends.JPEG';
 import hikePhoto from '../assets/About/hike.JPG';
 import waterfallPhoto from '../assets/About/waterfall.JPG';
+import { useScrollRevealAll } from '../hooks/useScrollReveal';
 
 export default function About() {
     const polaroids = [
@@ -13,10 +14,13 @@ export default function About() {
         { src: waterfallPhoto, caption: 'a hidden find in PR', rotation: 5 },
     ];
 
+    // Initialize scroll reveal for all elements with .scroll-reveal class
+    useScrollRevealAll();
+
     return (
         <main className="about-page">
             <section className="about-hero">
-                <div className="about-content animate-in stagger-1">
+                <div className="about-content scroll-reveal stagger-1">
                     <h1>About Me</h1>
                     <p className="about-bio">
                         I'm a rising senior at UC Berkeley studying Computer Science and Business. 
@@ -37,7 +41,7 @@ export default function About() {
                         <li>Solving anagrams and puzzles (NYT mini, crossword, sudoku, mahjong, you name it)</li>
                     </ul>
                 </div>
-                <div className="about-polaroids animate-in stagger-2">
+                <div className="about-polaroids scroll-reveal stagger-2">
                     {polaroids.map((photo, index) => (
                         <div 
                             key={index} 
@@ -53,13 +57,13 @@ export default function About() {
                 </div>
             </section>
 
-            <section className="experience-section animate-in stagger-3">
-                <h2 className="section-title">Experience</h2>
+            <section className="experience-section">
+                <h2 className="section-title scroll-reveal">Experience</h2>
                 <div className="experience-list">
                     {experienceData.map((exp, index) => (
                         <div 
                             key={exp.id} 
-                            className={`experience-item animate-in stagger-${Math.min(index + 4, 8)}`}
+                            className={`experience-item scroll-reveal stagger-${Math.min((index % 4) + 1, 4)}`}
                         >
                             <div className="experience-header">
                                 <div className="experience-role">
@@ -83,11 +87,14 @@ export default function About() {
                 </div>
             </section>
 
-            <section className="education-section animate-in stagger-4">
-                <h2 className="section-title">Education</h2>
+            <section className="education-section">
+                <h2 className="section-title scroll-reveal">Education</h2>
                 <div className="education-list">
-                    {educationData.map((edu) => (
-                        <div key={edu.id} className="education-item">
+                    {educationData.map((edu, index) => (
+                        <div 
+                            key={edu.id} 
+                            className={`education-item scroll-reveal stagger-${index + 1}`}
+                        >
                             <div className="education-header">
                                 <div className="education-degree">
                                     <h3>{edu.degree}</h3>

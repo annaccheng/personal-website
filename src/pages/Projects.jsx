@@ -1,4 +1,5 @@
 import projectsData from '../data/projects.json';
+import { useScrollRevealAll } from '../hooks/useScrollReveal';
 
 export default function Projects() {
     // Sort projects by date (newest first)
@@ -6,9 +7,12 @@ export default function Projects() {
         new Date(b.project_date) - new Date(a.project_date)
     );
 
+    // Initialize scroll reveal for all elements with .scroll-reveal class
+    useScrollRevealAll();
+
     return (
         <main className="projects-page">
-            <div className="animate-in stagger-1">
+            <div className="scroll-reveal stagger-1">
                 <h1>Projects</h1>
                 <p className="projects-intro">
                     A collection of products, designs, and research I've worked on.
@@ -19,7 +23,7 @@ export default function Projects() {
                 {sortedProjects.map((project, index) => (
                     <article 
                         key={project.id} 
-                        className={`project-item animate-in stagger-${Math.min(index + 2, 8)}`}
+                        className={`project-item scroll-reveal stagger-${Math.min((index % 4) + 1, 4)}`}
                     >
                         {project.photo && (
                             <div className="project-image">
