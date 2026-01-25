@@ -339,79 +339,57 @@ main {
 }
 
 .timeline {
-  position: relative;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
-  padding-left: 1.5rem;
-}
-
-/* Vertical timeline bar */
-.timeline::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0.5rem;
-  bottom: 0.5rem;
-  width: 3px;
-  background: linear-gradient(to bottom, #3a5a40, #a3b18a);
-  border-radius: 2px;
+  padding-left: 0.5rem;
 }
 
 .timeline-item {
   position: relative;
-  display: grid;
-  grid-template-columns: 60px 1fr;
-  gap: 1.5rem;
+  padding-left: 2rem;
+  padding-bottom: 2.5rem;
+  border-left: 2px solid var(--border);
+}
+
+.timeline-item:last-child {
+  padding-bottom: 0;
 }
 
 /* Timeline dot */
 .timeline-item::before {
   content: '';
   position: absolute;
-  left: -1.5rem;
-  top: 0.35rem;
+  left: -6px;
+  top: 0.5rem;
   width: 10px;
   height: 10px;
   background-color: #3a5a40;
   border-radius: 50%;
-  transform: translateX(-3.5px);
   box-shadow: 0 0 0 3px var(--bg);
 }
 
-.timeline-date {
-  font-size: 0.9rem;
-  color: var(--text-muted);
-  font-weight: 500;
-}
-
-.timeline-content {
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid var(--border-light);
-}
-
-.timeline-item:last-child .timeline-content {
-  border-bottom: none;
-}
-
-.timeline-role {
+.timeline-year {
+  font-size: 1.5rem;
+  font-weight: 600;
   color: var(--text);
+  margin: 0 0 1rem 0;
 }
 
-.timeline-company {
+.timeline-highlights {
+  margin: 0;
+  padding-left: 1.25rem;
+  list-style-type: disc;
+}
+
+.timeline-highlights li {
+  font-size: 0.95rem;
   color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 0.75rem;
 }
 
-.timeline-company strong {
-  color: var(--text);
-  font-weight: 500;
-}
-
-.timeline-description {
-  margin: 0.5rem 0 0 0;
-  font-size: 0.9rem;
-  color: var(--text-secondary);
-  line-height: 1.5;
+.timeline-highlights li:last-child {
+  margin-bottom: 0;
 }
 
 .view-more-link {
@@ -976,8 +954,12 @@ main {
   }
 
   .timeline-item {
-    grid-template-columns: 50px 1fr;
-    gap: 1rem;
+    padding-left: 1.5rem;
+    padding-bottom: 2rem;
+  }
+
+  .timeline-year {
+    font-size: 1.25rem;
   }
 
   .experience-header {

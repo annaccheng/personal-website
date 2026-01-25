@@ -1,11 +1,8 @@
 import { Link } from 'react-router-dom';
-import experienceData from '../data/experience.json';
+import timelineData from '../data/timeline.json';
 import { useScrollRevealAll } from '../hooks/useScrollReveal';
 
 export default function Home() {
-    // Get recent experiences for the timeline
-    const recentExperiences = experienceData.slice(0, 4);
-    
     // Initialize scroll reveal for all elements with .scroll-reveal class
     useScrollRevealAll();
 
@@ -21,17 +18,17 @@ export default function Home() {
             <section className="timeline-section">
                 <h2 className="section-title scroll-reveal stagger-2">Timeline</h2>
                 <div className="timeline">
-                    {recentExperiences.map((exp, index) => (
+                    {timelineData.map((item, index) => (
                         <div 
-                            key={exp.id} 
+                            key={item.year} 
                             className={`timeline-item scroll-reveal stagger-${Math.min(index + 3, 8)}`}
                         >
-                            <span className="timeline-date">{exp.startDate.split(' ')[1]}</span>
-                            <div className="timeline-content">
-                                <span className="timeline-role">{exp.title}</span>
-                                <span className="timeline-company"> at <strong>{exp.company}</strong></span>
-                                <p className="timeline-description">{exp.description}</p>
-                            </div>
+                            <h3 className="timeline-year">{item.year}</h3>
+                            <ul className="timeline-highlights">
+                                {item.highlights.map((highlight, i) => (
+                                    <li key={i}>{highlight}</li>
+                                ))}
+                            </ul>
                         </div>
                     ))}
                 </div>

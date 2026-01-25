@@ -1,21 +1,24 @@
 [
     {
         "year": 2025,
-        "highlights": ["Product @ Salesforce - Supported 0-1 launch of tools across Agentforce and led internal enablement design", 
-        "Engineering @ Trevor Project - Built AI-powered platform for crisis intervention and classification and triage dashboards",
-        "Working on Athena - Interactive language learning platform focused on mastery, inspired by my parents :)"
+        "highlights": [
+            "Currently tinkering with some side projects :)",
+            "Product @ Salesforce - Supported 0-1 launch of tools across Agentforce and led internal enablement design", 
+            "Engineering @ Trevor Project - Built AI-powered platform for crisis intervention and classification and triage dashboards"
         ]
     },
     {
         "year": 2024,
-        "highlights": ["Product Analytics @ Capital One - Identified key conversion drivers and reimagined landing page experiences",
-        "GTM @ Tesla - Shaped GTM strategy for new target demographics and created campaign strategies and metrics"
+        "highlights": [
+            "Product Analytics @ Capital One - Identified key conversion drivers and reimagined landing page experiences",
+            "GTM @ Tesla - Shaped GTM strategy for new target demographics and created campaign strategies and metrics"
         ]
     },
     {
         "year": 2023,
-        "highlights": [ "Database Engineering @ Masterclass - Built automated financial modeling systems and forecasting tools",
-        "Finance @ GoFundMe - Created financial models and forecasting tools"
+        "highlights": [ 
+            "Database Engineering @ Masterclass - Built automated financial modeling systems and forecasting tools",
+            "Finance @ GoFundMe - Created financial models and forecasting tools"
         ]
     }
 ]

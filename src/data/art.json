@@ -1,0 +1,48 @@
+[
+    {
+        "title":"Left Behind", 
+        "description":"Colored pencil on pastel paper",
+        "image": "../assets/Art/LeftBehind.jpg"
+    },
+
+    {
+        "title":"Kintsugi", 
+        "description":"Colored pencil and watercolor on pastel paper",
+        "image": "../assets/Art/Kintsugi.jpg"
+    },
+    {
+        "title":"Living Archive", 
+        "description":"Colored pencil on pastel paper",
+        "image": "../assets/Art/LivingArchive.jpg"
+    },
+    {
+        "title":"Plastic Filet", 
+        "description":"Colored pencil on pastel paper",
+        "image": "../assets/Art/PlasticFilet.jpg"
+    },
+    {
+        "title":"Don't Cry Over a Spill", 
+        "description":"Colored pencil on pastel paper",
+        "image": "../assets/Art/Spill.jpg"
+    },
+    {
+        "title":"Daily Commute", 
+        "description":"Colored pencil on pastel paper",
+        "image": "../assets/Art/DailyCommute.jpg"
+    },
+    {
+        "title":"Sleight of Hand", 
+        "description":"Colored pencil on pastel paper",
+        "image": "../assets/Art/SleightOfHand.jpg"
+    },
+    {
+        "title":"Vanitas", 
+        "description":"Colored pencil on pastel paper",
+        "image": "../assets/Art/Vanitas.jpg"
+    },
+    {
+        "title":"Behind the Scenes", 
+        "description":"Colored pencil on pastel paper",
+        "image": "../assets/Art/BehindTheScenes.jpg"
+    }
+]
