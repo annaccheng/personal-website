@@ -47,6 +47,13 @@ export default function Header() {
                     >
                         Projects
                     </Link>
+                    <Link 
+                        to="/art" 
+                        className={isActive('/art') ? 'active' : ''}
+                        onClick={closeMobileMenu}
+                    >
+                        Art
+                    </Link>
                     <a 
                         href="mailto:annacheng@berkeley.edu"
                         onClick={closeMobileMenu}

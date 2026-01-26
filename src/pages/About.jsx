@@ -49,7 +49,7 @@ export default function About() {
                             style={{ '--rotation': `${photo.rotation}deg` }}
                         >
                             <div className="polaroid-image">
-                                <img src={photo.src} alt={photo.caption} />
+                                <img src={photo.src} alt={photo.caption} loading="lazy" />
                             </div>
                             <p className="polaroid-caption">{photo.caption}</p>
                         </div>

@@ -4,6 +4,7 @@ import { Routes, Route } from 'react-router-dom';
 const Home = lazy(() => import('../pages/Home'));
 const Projects = lazy(() => import('../pages/Projects'));
 const About = lazy(() => import('../pages/About'));
+const Art = lazy(() => import('../pages/Art'));
 
 export default function PageTransition() {
     return (
@@ -14,6 +15,7 @@ export default function PageTransition() {
                 <Route path="/" element={<Home />} />
                 <Route path="/projects" element={<Projects />} />
                 <Route path="/about" element={<About />} />
+                <Route path="/art" element={<Art />} />
             </Routes>
         </Suspense>
     );

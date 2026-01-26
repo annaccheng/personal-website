@@ -1,48 +1,47 @@
 [
     {
-        "title":"Left Behind", 
-        "description":"Colored pencil on pastel paper",
-        "image": "../assets/Art/LeftBehind.jpg"
-    },
-
-    {
-        "title":"Kintsugi", 
-        "description":"Colored pencil and watercolor on pastel paper",
-        "image": "../assets/Art/Kintsugi.jpg"
+        "title": "Left Behind", 
+        "description": "Colored pencil on pastel paper",
+        "image": "/Art/LeftBehind.jpg"
     },
     {
-        "title":"Living Archive", 
-        "description":"Colored pencil on pastel paper",
-        "image": "../assets/Art/LivingArchive.jpg"
+        "title": "Kintsugi", 
+        "description": "Colored pencil and watercolor on pastel paper",
+        "image": "/Art/Kintsugi.jpg"
     },
     {
-        "title":"Plastic Filet", 
-        "description":"Colored pencil on pastel paper",
-        "image": "../assets/Art/PlasticFilet.jpg"
+        "title": "Living Archive", 
+        "description": "Ink and watercolor",
+        "image": "/Art/LivingArchive.jpg"
     },
     {
-        "title":"Don't Cry Over a Spill", 
-        "description":"Colored pencil on pastel paper",
-        "image": "../assets/Art/Spill.jpg"
+        "title": "Plastic Filet", 
+        "description": "Colored pencil and assorted collage",
+        "image": "/Art/PlasticFilet.jpg"
     },
     {
-        "title":"Daily Commute", 
-        "description":"Colored pencil on pastel paper",
-        "image": "../assets/Art/DailyCommute.jpg"
+        "title": "Don't Cry Over a Spill", 
+        "description": "Ink and watercolor",
+        "image": "/Art/Spill.jpg"
     },
     {
-        "title":"Sleight of Hand", 
-        "description":"Colored pencil on pastel paper",
-        "image": "../assets/Art/SleightOfHand.jpg"
+        "title": "Daily Commute", 
+        "description": "Colored pencil on pastel paper",
+        "image": "/Art/DailyCommute.jpg"
     },
     {
-        "title":"Vanitas", 
-        "description":"Colored pencil on pastel paper",
-        "image": "../assets/Art/Vanitas.jpg"
+        "title": "Sleight of Hand", 
+        "description": "Graphite and colored pencil",
+        "image": "/Art/SleightOfHand.jpg"
     },
     {
-        "title":"Behind the Scenes", 
-        "description":"Colored pencil on pastel paper",
-        "image": "../assets/Art/BehindTheScenes.jpg"
+        "title": "Vanitas", 
+        "description": "Ink pen and ink wash",
+        "image": "/Art/Vanitas.jpg"
+    },
+    {
+        "title": "Behind the Scenes", 
+        "description": "Colored pencil on pastel paper",
+        "image": "/Art/BehindTheScenes.jpg"
     }
 ]

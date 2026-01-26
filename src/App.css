@@ -33,7 +33,7 @@
   --tag-bg: #1f1f1f;
   --tag-text: #a1a1a1;
   --title-gradient: linear-gradient(to right, #5c7650, #a3b18a, #dad7cd);
-  --title2-color: #5c7650;
+  --title2-color: #a3b18a;
   --pill-bg: rgba(0, 0, 0, 0.3);
   --pill-hover: rgba(255, 255, 255, 0.08);
   --pill-active: rgba(255, 255, 255, 0.12);
@@ -823,6 +823,226 @@ main {
 }
 
 /* =========================================
+   Art Page
+   ========================================= */
+.art-page {
+  padding: 6rem 2rem 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  min-height: calc(100vh - 200px);
+}
+
+.art-hero {
+  margin-bottom: 3rem;
+}
+
+.art-hero h1 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin: 0 0 1rem 0;
+  background-image: var(--title-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+}
+
+.art-intro {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  max-width: 600px;
+  line-height: 1.6;
+}
+
+.art-gallery {
+  columns: 3;
+  column-gap: 1.5rem;
+}
+
+.art-item {
+  position: relative;
+  cursor: pointer;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  break-inside: avoid;
+}
+
+.art-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.art-item-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  padding: 2rem 1.25rem 1.25rem;
+}
+
+.art-item:hover .art-item-overlay,
+.art-item:focus .art-item-overlay {
+  opacity: 1;
+}
+
+.art-item-title {
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+/* Art Modal */
+.art-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--bg);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.art-modal-content {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  max-width: 1100px;
+  max-height: 80vh;
+  margin: 0 auto;
+}
+
+.art-modal-image-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 0;
+}
+
+.art-modal-image {
+  max-width: 100%;
+  max-height: 75vh;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+.art-modal-info {
+  flex: 0 0 220px;
+  text-align: left;
+}
+
+.art-modal-info h2 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin: 0 0 0.75rem 0;
+  color: var(--title2-color);
+}
+
+.art-modal-info p {
+  font-size: 1rem;
+  color: var(--text);
+  margin: 0;
+  line-height: 1.6;
+}
+
+.art-modal-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: none;
+  border: none;
+  color: var(--text);
+  font-size: 2rem;
+  cursor: pointer;
+  z-index: 10000;
+  line-height: 1;
+  opacity: 0.6;
+  transition: opacity 0.2s ease;
+  padding: 0.5rem;
+}
+
+.art-modal-close:hover {
+  opacity: 1;
+}
+
+.art-modal-expand {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  background: none;
+  border: none;
+  color: var(--text);
+  cursor: pointer;
+  z-index: 10000;
+  opacity: 0.6;
+  transition: opacity 0.2s ease;
+  padding: 0.5rem;
+}
+
+.art-modal-expand:hover {
+  opacity: 1;
+}
+
+.art-modal-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--text);
+  cursor: pointer;
+  padding: 1rem;
+  opacity: 0.5;
+  transition: opacity 0.2s ease;
+}
+
+.art-modal-nav:hover {
+  opacity: 1;
+}
+
+.art-modal-prev {
+  left: 1rem;
+}
+
+.art-modal-next {
+  right: 1rem;
+}
+
+/* Expanded View */
+.art-expanded-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--bg);
+  z-index: 10001;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.art-expanded-backdrop .art-modal-close {
+  color: var(--text);
+}
+
+.art-expanded-image {
+  max-width: 95vw;
+  max-height: 95vh;
+  object-fit: contain;
+}
+
+/* =========================================
    Footer
    ========================================= */
 .footer {
@@ -1010,6 +1230,51 @@ main {
     flex-direction: column;
     gap: 0.5rem;
   }
+
+  .art-page {
+    padding: 5rem 1.5rem 3rem;
+  }
+
+  .art-gallery {
+    columns: 2;
+    column-gap: 1rem;
+  }
+
+  .art-item {
+    margin-bottom: 1rem;
+  }
+
+  .art-modal-content {
+    flex-direction: column;
+    gap: 1.5rem;
+    max-height: none;
+    overflow-y: auto;
+  }
+
+  .art-modal-image {
+    max-height: 50vh;
+  }
+
+  .art-modal-info {
+    flex: none;
+    text-align: left;
+    padding-bottom: 2rem;
+    width: 100%;
+  }
+
+  .art-modal-nav {
+    top: auto;
+    bottom: 1rem;
+    transform: none;
+  }
+
+  .art-modal-prev {
+    left: 2rem;
+  }
+
+  .art-modal-next {
+    right: 2rem;
+  }
 }
 
 @media (max-width: 480px) {
@@ -1028,5 +1293,30 @@ main {
   .footer-links {
     flex-direction: row;
     gap: 1.25rem;
+  }
+
+  .art-hero h1 {
+    font-size: 2rem;
+  }
+
+  .art-modal-info h2 {
+    font-size: 1.5rem;
+  }
+
+  .art-gallery {
+    columns: 2;
+    column-gap: 0.75rem;
+  }
+
+  .art-item {
+    margin-bottom: 0.75rem;
+  }
+
+  .art-item-overlay {
+    padding: 0.75rem;
+  }
+
+  .art-item-title {
+    font-size: 0.85rem;
   }
 }
