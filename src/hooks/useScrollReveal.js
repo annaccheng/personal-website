@@ -59,5 +59,5 @@ export function useScrollRevealAll(selector = '.scroll-reveal') {
         }, 10);
 
         return () => clearTimeout(timeoutId);
-    }, []); // Empty dependency array - only run once on mount
+    }, [selector]);
 }
