@@ -12,6 +12,17 @@
 
     {
       "id": 2,
+      "title": "Contract Software Engineer",
+      "company": "The Trevor Project",
+      "location": "Berkeley, CA",
+      "description": "Built backend services and ML workflows for a 24/7 crisis response platform, automating case classification and routing to reduce triage time by 36%. Developed internal dashboards with escalation logic and monitoring to support reliable, high-risk decision-making.",
+      "tags": ["Software Engineering", "RAG", "Text Classification", "Sentiment Analysis", "Voice Agents"],
+      "startDate": "January 2025", 
+      "endDate": "May 2025"
+    },
+
+    {
+      "id": 3,
       "title": "Product Management and Analytics Intern",
       "company": "Capital One",
       "location": "McLean, VA",
@@ -22,18 +33,18 @@
     },
 
     {
-      "id": 3,
-      "title": "Contract Consultant",
+      "id": 4,
+      "title": "Contract Software Engineer",
       "company": "Tesla",
       "location": "Fremont, CA",
-      "description": "Analyzed 150+ market reports to identify competitive opportunities and shape GTM and product strategy. Built campaign mockups, defined key performance metrics, and gathered customer insights through interviews and market research.",
-      "tags": ["SQL", "Pandas", "GTM Strategy", "Product Strategy"],
+      "description": "Aggregated data from 500+ surveys and internal reports by developing scalable data and ML pipelines for customer segmentation and sentiment analysis, translating research insights into actionable product and experimentation strategies.",
+      "tags": ["SQL", "Pandas", "Data Engineering", "GTM Strategy"],
       "startDate": "January 2024", 
       "endDate": "May 2024"
     },
     
     {
-      "id": 4,
+      "id": 5,
       "title": "Database Engineering Intern",
       "company": "MasterClass",
       "location": "San Francisco, CA",
@@ -44,7 +55,7 @@
     },
 
     {
-      "id": 5,
+      "id": 6,
       "title": "Contract Product Manager",
       "company": "Verizon Cloud",
       "location": "San Francisco, CA",
@@ -55,7 +66,7 @@
     },
 
     {
-      "id": 6,
+      "id": 7,
       "title": "Finance and Analytics Intern",
       "company": "GoFundMe",
       "location": "San Francisco, CA",
