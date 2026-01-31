@@ -34,11 +34,13 @@ export function useScrollReveal(options = {}) {
 // For multiple elements, use this hook
 export function useScrollRevealAll(selector = '.scroll-reveal') {
     useEffect(() => {
+        let observer = null;
+        
         // Small delay to ensure DOM is ready after React render
         const timeoutId = setTimeout(() => {
             const elements = document.querySelectorAll(selector);
             
-            const observer = new IntersectionObserver(
+            observer = new IntersectionObserver(
                 (entries) => {
                     entries.forEach((entry) => {
                         if (entry.isIntersecting) {
@@ -54,10 +56,13 @@ export function useScrollRevealAll(selector = '.scroll-reveal') {
             );
 
             elements.forEach((el) => observer.observe(el));
-
-            return () => observer.disconnect();
         }, 10);
 
-        return () => clearTimeout(timeoutId);
+        return () => {
+            clearTimeout(timeoutId);
+            if (observer) {
+                observer.disconnect();
+            }
+        };
     }, [selector]);
 }
