@@ -25,15 +25,32 @@ export default function Projects() {
                         key={project.id} 
                         className={`project-item scroll-reveal stagger-${Math.min((index % 4) + 1, 4)}`}
                     >
-                        {project.photo && (
-                            <div className="project-image">
+                        <div className="project-image">
+                            {project.photo ? (
                                 <img 
                                     src={project.photo} 
                                     alt={project.title}
                                     loading="lazy"
                                 />
-                            </div>
-                        )}
+                            ) : (
+                                <div className="project-image-placeholder">
+                                    <svg 
+                                        width="48" 
+                                        height="48" 
+                                        viewBox="0 0 24 24" 
+                                        fill="none" 
+                                        stroke="currentColor" 
+                                        strokeWidth="1.5"
+                                        strokeLinecap="round" 
+                                        strokeLinejoin="round"
+                                    >
+                                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                                        <circle cx="8.5" cy="8.5" r="1.5"/>
+                                        <polyline points="21 15 16 10 5 21"/>
+                                    </svg>
+                                </div>
+                            )}
+                        </div>
                         <div className="project-content">
                             <div className="project-header">
                                 <h2>{project.title}</h2>
