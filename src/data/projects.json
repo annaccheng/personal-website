@@ -3,7 +3,7 @@
         "id": 2,
         "project_date": "2025-04-20",
         "title": "Athena",
-        "description": "Interactive coversational platform that scrapes educational content from a variety of educational resources to create personalized learning plans and meet users at their level",
+        "description": "Interactive coversational platform that scrapes educational content from a variety of resources to create personalized learning plans and meet users at their level",
         "photo": "",
         "tags": ["React", "Python", "APIs", "AI"],
         "link": "",
